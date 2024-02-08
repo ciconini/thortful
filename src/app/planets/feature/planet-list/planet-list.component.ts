@@ -22,14 +22,14 @@ export class PlanetListComponent implements OnInit {
     private readonly planetService: PlanetService,
     private readonly route: ActivatedRoute
   ) {
-    this.planets$ = this.planetService.getPlanets();
     this.pageControl = {page: 1}
   }
-
+  
   ngOnInit(): void {
     this.route.queryParams.subscribe((params: Params) => {
       if(params['page'])
         this.pageControl.page = params['page']
+      this.planets$ = this.planetService.getPlanets(this.pageControl);
     })
   }
 }

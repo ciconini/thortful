@@ -3,7 +3,10 @@
         @if (planet.name) {
             <img [src]="normalizeUrl(planet.name)" alt="Planet {{planet.name}} Image"/>
         } @else {
-
+            <div class="no-image"></div>
         }
+    </div>
+    <div class="planet-name">
+        {{planet.name}}
     </div>
 </a>

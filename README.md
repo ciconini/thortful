@@ -1,27 +1,40 @@
-# Thortful
+![Challenge Accepted](https://memegenerator.net/img/instances/48692669/challenge-accepted.jpg)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.1.
+# thortful Front End Challenge
 
-## Development server
+Show us what you can do!
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+We'd like you to write a small app with the following requirements:
 
-## Code scaffolding
+- Use Angular or React
+- Use a RESTFul API
+- Good looking UI
+- Have a user interaction: be creative with the functionality on the page
+- Create a readme file explaining how to build / run your app
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+On the API side, the choice is yours, from the Star Wars API (https://swapi.co), Github(https://developer.github.com/v3/search/#search-issues), (Random User API (https://randomuser.me), .....
 
-## Build
+Few notes on the app:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- UI: You can use Bootstrap, Material, ... Or build something from scratch.
+- Use best practices in writing JavaScript / Typescript, CSS, and HTML.
+- Write clearly and use a proper structure to write the application.
+- Demonstrate you have tested that the app works how you want it to.
 
-## Running unit tests
+We could be sneaky and not say anything else, but here's some things we're looking to see:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- An app we can run ;)
+- Code we can read
+- Something you'll be happy to go through with us during an interview
 
-## Running end-to-end tests
+### Alternatively,
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+If you have recently worked on a relevant project that you're able to share then we'd be happy to accept this for submission.
 
-## Further help
+### Submission notes
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Send us a link to a repo containing your application and build/run instructions.
+
+---
+
+[@thortful](https://www.thortful.com) - 2022

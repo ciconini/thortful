@@ -11,12 +11,11 @@ import { PlanetService } from '../../data-access/planet.service'
   styleUrl: './planet-detail.component.scss'
 })
 export class PlanetDetailComponent implements OnInit {
-  planets$!: Observable<Planet[]>;
 
   constructor(
     private readonly planetService: PlanetService
   ) {
-    this.planets$ = this.planetService.getPlanets();
+    
   }
 
   ngOnInit(): void {

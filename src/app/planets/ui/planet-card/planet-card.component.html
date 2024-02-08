@@ -1,9 +1,9 @@
-<div class="planet-card">
+<a class="planet-card" [routerLink]="['/planets', getId(index)]">
     <div class="planet-image">
         @if (planet.name) {
             <img [src]="normalizeUrl(planet.name)" alt="Planet {{planet.name}} Image"/>
         } @else {
-            
+
         }
     </div>
-</div>
+</a>

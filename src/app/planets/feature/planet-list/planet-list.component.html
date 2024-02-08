@@ -2,8 +2,8 @@
 <p>Filter</p>
 @if (planets$ | async; as planets) {
     <div class="list planet-list">
-        @for (planet of planets; track planet.name) {
-            <app-planet-card [planet]="planet"></app-planet-card>
+        @for (planet of planets; track $index) {
+            <app-planet-card [planet]="planet" [page]="pageControl.page" [index]="$index"></app-planet-card>
         }
     </div>
 }

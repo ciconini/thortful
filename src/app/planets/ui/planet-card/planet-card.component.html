@@ -1,1 +1,9 @@
-<p>planet-card works!</p>
+<div class="planet-card">
+    <div class="planet-image">
+        @if (planet.name) {
+            <img [src]="normalizeUrl(planet.name)" alt="Planet {{planet.name}} Image"/>
+        } @else {
+            
+        }
+    </div>
+</div>

@@ -1,1 +1,11 @@
-<p>planet-list works!</p>
+<h1>Star Wars Planets</h1>
+<p>Filter</p>
+@if (planets$ | async; as planets) {
+    <div class="list planet-list">
+        @for (planet of planets; track $index) {
+            <app-planet-card [planet]="planet" [page]="pageControl.page" [index]="$index"></app-planet-card>
+        } @empty {
+            loading...
+        }
+    </div>
+}

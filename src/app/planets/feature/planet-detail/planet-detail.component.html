@@ -1,1 +1,7 @@
-<p>planet-detail works!</p>
+@defer (on viewport; on timer(5s)) {
+    @if (planet$ | async; as planet){
+        <h1>{{planet.name}}</h1>
+    }
+} @placeholder {
+    <div>loading...</div>
+}

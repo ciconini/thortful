@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common'
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs'
-import { StarshipService } from '../../data-access/starships.service'
+import { StarshipsService } from '../../data-access/starships.service'
 import { StarshipCardComponent } from '../../ui/starship-card/starship-card.component'
 import { PageControl } from '../../../shared/util/model/page-control'
 import { ActivatedRoute, Params } from '@angular/router'
@@ -11,8 +11,8 @@ import { Starship } from '../../util/model/starship'
   selector: 'app-starships-list',
   standalone: true,
   imports: [CommonModule, StarshipCardComponent],
-  templateUrl: './starship-list.component.html',
-  styleUrl: './starship-list.component.scss'
+  templateUrl: './starships-list.component.html',
+  styleUrl: './starships-list.component.scss'
 })
 export class StarshipsListComponent implements OnInit {
   starships$!: Observable<Starship[]>;
@@ -29,7 +29,7 @@ export class StarshipsListComponent implements OnInit {
     this.route.queryParams.subscribe((params: Params) => {
       if(params['page'])
         this.pageControl.page = params['page']
-      this.starships$ = this.planetService.getStarships(this.pageControl);
+      this.starships$ = this.starshipsService.getStarships(this.pageControl);
     })
   }
 }

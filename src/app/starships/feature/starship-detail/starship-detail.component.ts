@@ -2,28 +2,28 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router'
 import { Observable } from 'rxjs'
 import { CommonModule } from '@angular/common'
-import { FilmService } from '../../data-access/starships.service'
-import { Film } from '../../util/model/starship'
+import { StarshipsService } from '../../data-access/starships.service'
+import { Starship } from '../../util/model/starship'
 
 @Component({
-  selector: 'app-film-detail',
+  selector: 'app-starship-detail',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './film-detail.component.html',
-  styleUrl: './film-detail.component.scss'
+  templateUrl: './starship-detail.component.html',
+  styleUrl: './starship-detail.component.scss'
 })
-export class FilmDetailComponent implements OnInit {
-  film$!: Observable<Film>;
+export class StarshipDetailComponent implements OnInit {
+  starship$!: Observable<Starship>;
 
   constructor(
-    private readonly filmService: FilmService,
+    private readonly starshipService: StarshipsService,
     private readonly route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
       if(params['id']){
-        this.film$ = this.filmService.getFilm(params['id'])
+        this.starship$ = this.starshipService.getStarship(params['id'])
       }
     })
   }

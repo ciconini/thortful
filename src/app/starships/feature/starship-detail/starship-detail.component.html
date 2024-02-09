@@ -1,6 +1,6 @@
 @defer (on viewport; on timer(5s)) {
-    @if (film$ | async; as film){
-        <h1>{{film.title}}</h1>
+    @if (starship$ | async; as starship){
+        <h1>{{starship.name}}</h1>
     }
 } @placeholder {
     <div>loading...</div>

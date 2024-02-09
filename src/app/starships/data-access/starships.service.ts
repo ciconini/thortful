@@ -3,19 +3,19 @@ import { Injectable } from '@angular/core';
 import { Observable, catchError, map, throwError } from 'rxjs'
 import { environment } from '../../../environments/environment.development'
 import { PageControl } from '../../shared/util/model/page-control'
-import { Film, FilmResponse } from '../util/model/starship'
+import { Starship, StarshipResponse } from '../util/model/starship'
 
 @Injectable({
   providedIn: 'root'
 })
-export class FilmService {
+export class StarshipsService {
 
   constructor(
     private readonly http: HttpClient
   ) { }
 
-  getFilms(pageControl: PageControl): Observable<Film[]> {
-    return this.http.get<FilmResponse>(`${environment.api}/films?page=${pageControl.page}`).pipe(
+  getStarships(pageControl: PageControl): Observable<Starship[]> {
+    return this.http.get<StarshipResponse>(`${environment.api}/starships?page=${pageControl.page}`).pipe(
       map(response => {
         return response.results
       }),
@@ -26,8 +26,8 @@ export class FilmService {
     )
   }
 
-  getFilm(id: string): Observable<Film> {
-    return this.http.get<Film>(`${environment.api}/films/${id}`).pipe(
+  getStarship(id: string): Observable<Starship> {
+    return this.http.get<Starship>(`${environment.api}/starships/${id}`).pipe(
       map(response => {
         return response
       }),

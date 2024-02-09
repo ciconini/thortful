@@ -1,14 +1,14 @@
 import { Routes } from '@angular/router';
-import { FilmListComponent } from '../feature/starships-list/starships-list.component'
-import { FilmDetailComponent } from '../feature/starship-detail/starship-detail.component'
+import { StarshipsListComponent } from '../feature/starships-list/starships-list.component'
+import { StarshipDetailComponent } from '../feature/starship-detail/starship-detail.component'
 
-export const filmRoutes: Routes = [
+export const starshipRoutes: Routes = [
     {
         path: "",
-        component: FilmListComponent
+        component: StarshipsListComponent
     },
     {
         path: ":id",
-        component: FilmDetailComponent
+        component: StarshipDetailComponent
     }
 ];

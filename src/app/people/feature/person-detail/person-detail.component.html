@@ -1,0 +1,7 @@
+@defer (on viewport; on timer(5s)) {
+    @if (person$ | async; as person){
+        <h1>{{person.name}}</h1>
+    }
+} @placeholder {
+    <div>loading...</div>
+}

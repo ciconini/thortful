@@ -1,0 +1,12 @@
+<a class="film-card" [routerLink]="['/films', getId(index)]">
+    <div class="film-image">
+        @if (film.title) {
+            <img [src]="normalizeUrl(film.title)" alt="Film {{film.title}} Image"/>
+        } @else {
+            <div class="no-image"></div>
+        }
+    </div>
+    <div class="film-name">
+        {{film.title}}
+    </div>
+</a>

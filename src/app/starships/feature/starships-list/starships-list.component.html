@@ -1,0 +1,11 @@
+<h1>Star Wars Planets</h1>
+<p>Filter</p>
+@if (films$ | async; as films) {
+    <div class="list planet-list">
+        @for (film of films; track $index) {
+            <app-film-card [film]="film" [page]="pageControl.page" [index]="$index"></app-film-card>
+        } @empty {
+            loading...
+        }
+    </div>
+}

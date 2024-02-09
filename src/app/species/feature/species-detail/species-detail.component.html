@@ -1,0 +1,7 @@
+@defer (on viewport; on timer(5s)) {
+    @if (species$ | async; as species){
+        <h1>{{species.name}}</h1>
+    }
+} @placeholder {
+    <div>loading...</div>
+}

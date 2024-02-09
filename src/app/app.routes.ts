@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { LayoutComponent } from './shared/ui/layout/layout.component'
 import { planetRoutes } from './planets/planet-shell/planet.routes'
 import { filmRoutes } from './films/film-shell/film.routes'
+import { speciesRoutes } from './species/species-shell/species.routes'
 
 export const routes: Routes = [
     {
@@ -32,6 +33,6 @@ export const routes: Routes = [
     {
         path: "species",
         component: LayoutComponent,
-        children: planetRoutes
+        children: speciesRoutes
     },
 ];

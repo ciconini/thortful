@@ -1,0 +1,11 @@
+<h1>Star Wars Planets</h1>
+<p>Filter</p>
+@if (starships$ | async; as starships) {
+    <div class="list starship-list">
+        @for (starship of starships; track $index) {
+            <app-starship-card [starship]="starship" [page]="pageControl.page" [index]="$index"></app-starship-card>
+        } @empty {
+            loading...
+        }
+    </div>
+}

@@ -1,0 +1,13 @@
+@import 'variables';
+@import 'mixins';
+
+.container {
+    padding-bottom: 50px;
+    position: relative;
+    .planet-list {
+        @include d-grid(200px);
+        gap: 1.5rem;
+        row-gap: 3rem;
+        margin-top: -30px;
+    }
+}

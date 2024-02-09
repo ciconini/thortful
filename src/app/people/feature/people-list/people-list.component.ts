@@ -6,11 +6,13 @@ import { PersonCardComponent } from '../../ui/person-card/person-card.component'
 import { PageControl } from '../../../shared/util/model/page-control'
 import { ActivatedRoute, Params } from '@angular/router'
 import { Person } from '../../util/model/people'
+import { PageTitleComponent } from '../../../shared/ui/page-title/page-title.component'
+import { LoadingComponent } from '../../../shared/ui/loading/loading.component'
 
 @Component({
   selector: 'app-people-list',
   standalone: true,
-  imports: [CommonModule, PersonCardComponent],
+  imports: [CommonModule, PersonCardComponent, PageTitleComponent, LoadingComponent],
   templateUrl: './people-list.component.html',
   styleUrl: './people-list.component.scss'
 })

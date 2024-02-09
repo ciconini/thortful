@@ -6,11 +6,13 @@ import { PlanetService } from '../../data-access/planet.service'
 import { PlanetCardComponent } from '../../ui/planet-card/planet-card.component'
 import { PageControl } from '../../../shared/util/model/page-control'
 import { ActivatedRoute, Params } from '@angular/router'
+import { PageTitleComponent } from '../../../shared/ui/page-title/page-title.component'
+import { LoadingComponent } from '../../../shared/ui/loading/loading.component'
 
 @Component({
   selector: 'app-planet-list',
   standalone: true,
-  imports: [CommonModule, PlanetCardComponent],
+  imports: [CommonModule, PlanetCardComponent, PageTitleComponent, LoadingComponent],
   templateUrl: './planet-list.component.html',
   styleUrl: './planet-list.component.scss'
 })

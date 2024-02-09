@@ -1,11 +1,16 @@
-<h1>Star Wars People</h1>
-<p>Filter</p>
-@if (people$ | async; as people) {
-    <div class="list planet-list">
-        @for (person of people; track $index) {
-            <app-person-card [person]="person" [page]="pageControl.page" [index]="$index"></app-person-card>
-        } @empty {
-            loading...
-        }
-    </div>
-}
+<app-page-title [background]="'assets/images/people/title-background.gif'">
+    Characters
+</app-page-title>
+<div class="container">
+    @if (people$ | async; as people) {
+        <div class="list people-list">
+            @for (person of people; track $index) {
+                <app-person-card [person]="person" [page]="pageControl.page" [index]="$index"></app-person-card>
+            } @empty {
+                loading...
+            }
+        </div>
+    } @else {
+        <app-loading></app-loading>
+    }
+</div>

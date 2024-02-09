@@ -1,7 +1,7 @@
 <a class="starship-card" [routerLink]="['/starships', getId(index)]">
     <div class="starship-image">
         @if (starship.name) {
-            <img [src]="normalizeUrl(starship.name)" alt="Film {{starship.name}} Image"/>
+            <img [src]="imageUrl" [appImgFallback]="'assets/images/starships/starship-placeholder.jpg'" alt="Film {{starship.name}} Image"/>
         } @else {
             <div class="no-image"></div>
         }

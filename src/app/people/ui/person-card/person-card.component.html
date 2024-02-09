@@ -1,12 +1,12 @@
 <a class="person-card" [routerLink]="['/people', getId(index)]">
     <div class="person-image">
-        @if (person.title) {
-            <img [src]="normalizeUrl(person.title)" alt="Person {{person.title}} Image"/>
+        @if (person.name) {
+            <img [src]="normalizeUrl(person.name)" appImgFallback="assets/images/people/people-placeholder.jpg" alt="Person {{person.name}} Image"/>
         } @else {
             <div class="no-image"></div>
         }
     </div>
     <div class="person-name">
-        {{person.title}}
+        {{person.name}}
     </div>
 </a>

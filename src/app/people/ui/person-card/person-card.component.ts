@@ -2,11 +2,12 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Person } from '../../util/model/people'
 import { RouterModule } from '@angular/router'
 import { ObjectId } from '../../../shared/util/method/object-id'
+import { ImgFallbackDirective } from '../../../shared/util/directives/imageFallback'
 
 @Component({
   selector: 'app-person-card',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule, ImgFallbackDirective],
   templateUrl: './person-card.component.html',
   styleUrl: './person-card.component.scss'
 })

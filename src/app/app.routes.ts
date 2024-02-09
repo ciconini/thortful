@@ -1,7 +1,8 @@
 import { Routes } from '@angular/router';
 import { LayoutComponent } from './shared/ui/layout/layout.component'
-import { planetRoutes } from './planets/planet-shell/planet.routes'
-import { filmRoutes } from './films/film-shell/film.routes'
+import { planetRoutes } from './planets/shell/planet.routes'
+import { filmRoutes } from './films/shell/film.routes'
+import { vehicleRoutes } from './vehicles/shell/vehicle.routes'
 
 export const routes: Routes = [
     {
@@ -27,7 +28,7 @@ export const routes: Routes = [
     {
         path: "vehicles",
         component: LayoutComponent,
-        children: planetRoutes
+        children: vehicleRoutes
     },
     {
         path: "species",

@@ -1,11 +1,16 @@
-<h1>Star Wars Films</h1>
-<p>Filter</p>
-@if (films$ | async; as films) {
-    <div class="list planet-list">
-        @for (film of films; track $index) {
-            <app-film-card [film]="film" [page]="pageControl.page" [index]="$index"></app-film-card>
-        } @empty {
-            loading...
-        }
-    </div>
-}
+<app-page-title [background]="'assets/images/films/title-background.gif'">
+    Star Wars Films
+</app-page-title>
+<div class="container">
+    @if (films$ | async; as films) {
+        <div class="list film-list">
+            @for (film of films; track $index) {
+                <app-film-card [film]="film" [page]="pageControl.page" [index]="$index"></app-film-card>
+            } @empty {
+                <div>no entries</div>
+            }
+        </div>
+    } @else {
+        <app-loading></app-loading>
+    }
+</div>

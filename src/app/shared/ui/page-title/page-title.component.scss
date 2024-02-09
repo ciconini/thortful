@@ -1,0 +1,33 @@
+@import 'mixins';
+@import 'variables';
+
+.title-background {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    background-size: cover;
+    position: relative;
+    .container {
+        position: relative;
+        z-index: 1;
+        h1 {
+            letter-spacing: 2px;
+            color: $white;
+            font-weight: 300;
+            text-transform: uppercase;
+        }
+    }
+    &::after {
+        @include pseudo;
+        width: 100%;
+        height: 100%;
+        background: #10151d46;
+        bottom: 0;
+    }
+    &::before {
+        @include pseudo;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to top, #10151D, #10151d00);
+        bottom: 0;
+    }
+}

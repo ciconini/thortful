@@ -6,11 +6,13 @@ import { FilmCardComponent } from '../../ui/film-card/film-card.component'
 import { PageControl } from '../../../shared/util/model/page-control'
 import { ActivatedRoute, Params } from '@angular/router'
 import { Film } from '../../util/model/film'
+import { PageTitleComponent } from '../../../shared/ui/page-title/page-title.component'
+import { LoadingComponent } from '../../../shared/ui/loading/loading.component'
 
 @Component({
   selector: 'app-planet-list',
   standalone: true,
-  imports: [CommonModule, FilmCardComponent],
+  imports: [CommonModule, FilmCardComponent, PageTitleComponent, LoadingComponent],
   templateUrl: './film-list.component.html',
   styleUrl: './film-list.component.scss'
 })

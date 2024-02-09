@@ -1,8 +1,11 @@
-@keyframes enlarge {
-    from {
-      transform: scaleX(1); /* Start at normal size */
+@keyframes hover {
+    0% {
+      transform: translateY(0)
     }
-    to {
-      transform: scaleX(1.5); /* Enlarge to  1.5 times the original width */
+    50% {
+      transform: translateY(5px);
+    }
+    100% {
+      transform: translateY(0);
     }
   }

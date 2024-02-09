@@ -1,0 +1,18 @@
+@import 'variables';
+@import 'mixins';
+
+h1 {
+    font-weight: 700;
+    color: $white
+}
+
+.container {
+    padding-bottom: 50px;
+    position: relative;
+    .film-list {
+        @include d-grid;
+        gap: 1.5rem;
+        row-gap: 3rem;
+        margin-top: -40px;
+    }
+}

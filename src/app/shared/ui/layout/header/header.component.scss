@@ -2,7 +2,11 @@
 @import "mixins";
 @import "animations";
 header {
+    position: fixed;
+    width: 100%;
+    backdrop-filter: blur(10px);
     background: $bg-header;
+    z-index: 3;
     .logo-img {
         width: 180px;
         margin-top: 16px;

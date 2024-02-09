@@ -35,5 +35,5 @@ $thortful-theme: mat.define-light-theme((
 
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: "Open Sans", "Helvetica Neue", Arial, sans-serif; }
+html, body { height: 100%; background: #0f0f0f;}
+body { margin: 0; font-family: "Open Sans", "Helvetica Neue", Arial, sans-serif; box-sizing: border-box; }

@@ -4,6 +4,7 @@ import { planetRoutes } from './planets/shell/planet.routes'
 import { filmRoutes } from './films/shell/film.routes'
 import { starshipRoutes } from './starships/starship-shell/starship.routes'
 import { vehicleRoutes } from './vehicles/shell/vehicle.routes'
+import { speciesRoutes } from './species/species-shell/species.routes'
 
 export const routes: Routes = [
     {
@@ -34,6 +35,6 @@ export const routes: Routes = [
     {
         path: "species",
         component: LayoutComponent,
-        children: planetRoutes
+        children: speciesRoutes
     },
 ];

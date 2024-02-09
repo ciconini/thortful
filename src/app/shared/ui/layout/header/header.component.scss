@@ -1,0 +1,49 @@
+@import "variables";
+@import "mixins";
+@import "animations";
+header {
+    background: $bg-header;
+    .logo-img {
+        width: 180px;
+        margin-top: 16px;
+    }
+    .nav-menu {
+        .menu {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            .menu-item {
+                margin: 0 8px;
+                a {
+                    display: block;
+                    padding: 16px 8px;
+                    position: relative;
+                    text-decoration: none;
+                    text-transform: uppercase;
+                    color: $nav-color;
+                    letter-spacing: 1px;
+                    &::before {
+                        @include pseudo;
+                        width: 1px;
+                        height: 2px;
+                        background-color: $primary;
+                        bottom: -1px;
+                        left: 50%;
+                        transition: transform .5s;
+                        opacity: 0;
+                    }
+                    &:hover, &.active {
+                        color: $nav-color-hover;
+                        &::before {
+                            opacity: 1;
+                            transform: scaleX(30);
+                            transition: transform .5s;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,7 +1,7 @@
 <a class="species-card" [routerLink]="['/speciess', getId(index)]">
     <div class="species-image">
         @if (species.name) {
-            <img [src]="normalizeUrl(species.name)" appImgFallback="assets/images/species/species-placeholder.jpg" alt="Planet {{species.name}} Image"/>
+            <img [src]="normalizeUrl(species.name)" appImgFallback="assets/images/placeholder.webp" alt="Planet {{species.name}} Image"/>
         } @else {
             <div class="no-image"></div>
         }

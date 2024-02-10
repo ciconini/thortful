@@ -6,11 +6,13 @@ import { VehicleCardComponent } from '../../ui/vehicle-card/vehicle-card.compone
 import { PageControl } from '../../../shared/util/model/page-control'
 import { ActivatedRoute, Params } from '@angular/router'
 import { Vehicle } from '../../util/model/vehicle'
+import { PageTitleComponent } from '../../../shared/ui/page-title/page-title.component'
+import { LoadingComponent } from '../../../shared/ui/loading/loading.component'
 
 @Component({
   selector: 'app-vehicles-list',
   standalone: true,
-  imports: [CommonModule, VehicleCardComponent],
+  imports: [CommonModule, VehicleCardComponent, PageTitleComponent, LoadingComponent],
   templateUrl: './vehicles-list.component.html',
   styleUrl: './vehicles-list.component.scss'
 })

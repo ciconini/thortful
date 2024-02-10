@@ -1,7 +1,7 @@
 <a class="person-card" [routerLink]="['/people', getId(index)]">
     <div class="person-image">
         @if (person.name) {
-            <img [src]="normalizeUrl(person.name)" appImgFallback="assets/images/people/people-placeholder.jpg" alt="Person {{person.name}} Image"/>
+            <img [src]="normalizeUrl(person.name)" appImgFallback="assets/images/placeholder.webp" alt="Person {{person.name}} Image"/>
         } @else {
             <div class="no-image"></div>
         }

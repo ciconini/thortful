@@ -1,7 +1,7 @@
 <a class="vehicle-card" [routerLink]="['/vehicles', getId(index)]">
     <div class="vehicle-image">
         @if (vehicle.name) {
-            <img [src]="normalizeUrl(vehicle.name)" alt="Film {{vehicle.name}} Image"/>
+            <img [src]="normalizeUrl(vehicle.name)" appImgFallback="assets/images/placeholder.webp" alt="Film {{vehicle.name}} Image"/>
         } @else {
             <div class="no-image"></div>
         }

@@ -1,0 +1,7 @@
+<div class="main-banner">
+    @if (banners$ | async; as banners) {
+        @for (banner of banners; track $index) {
+            <app-banner [banner]="banner" [position]="$index"></app-banner>
+        }
+    }
+</div>

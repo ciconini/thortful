@@ -6,8 +6,14 @@ import { starshipRoutes } from './starships/starship-shell/starship.routes'
 import { vehicleRoutes } from './vehicles/shell/vehicle.routes'
 import { speciesRoutes } from './species/species-shell/species.routes'
 import { peopleRoutes } from './people/shell/people.routes'
+import { homepageRoutes } from './homepage/shell/homepage.routes'
 
 export const routes: Routes = [
+    {
+        path: "",
+        component: LayoutComponent,
+        children: homepageRoutes
+    },
     {
         path: "planets",
         component: LayoutComponent,

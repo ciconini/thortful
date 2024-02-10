@@ -6,11 +6,13 @@ import { StarshipCardComponent } from '../../ui/starship-card/starship-card.comp
 import { PageControl } from '../../../shared/util/model/page-control'
 import { ActivatedRoute, Params } from '@angular/router'
 import { Starship } from '../../util/model/starship'
+import { PageTitleComponent } from '../../../shared/ui/page-title/page-title.component'
+import { LoadingComponent } from '../../../shared/ui/loading/loading.component'
 
 @Component({
   selector: 'app-starships-list',
   standalone: true,
-  imports: [CommonModule, StarshipCardComponent],
+  imports: [CommonModule, StarshipCardComponent, PageTitleComponent, LoadingComponent],
   templateUrl: './starships-list.component.html',
   styleUrl: './starships-list.component.scss'
 })

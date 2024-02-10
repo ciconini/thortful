@@ -27,7 +27,7 @@ export class SpeciesCardComponent implements OnInit{
   }
 
   normalizeUrl(name: string): string {
-    return "assets/images/species/" + name.toLowerCase().replace(" ", "-") + ".jpg";
+    return "assets/images/species/" + name.toLowerCase().replace(" ", "-").replace("'", "") + ".jpg";
   }
 
   getId(index: number): number {

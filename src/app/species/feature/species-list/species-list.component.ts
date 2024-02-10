@@ -6,11 +6,13 @@ import { SpeciesService } from '../../data-access/species.service'
 import { SpeciesCardComponent } from '../../ui/species-card/species-card.component'
 import { PageControl } from '../../../shared/util/model/page-control'
 import { ActivatedRoute, Params } from '@angular/router'
+import { PageTitleComponent } from '../../../shared/ui/page-title/page-title.component'
+import { LoadingComponent } from '../../../shared/ui/loading/loading.component'
 
 @Component({
   selector: 'app-species-list',
   standalone: true,
-  imports: [CommonModule, SpeciesCardComponent],
+  imports: [CommonModule, SpeciesCardComponent, PageTitleComponent, LoadingComponent],
   templateUrl: './species-list.component.html',
   styleUrl: './species-list.component.scss'
 })

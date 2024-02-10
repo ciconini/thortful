@@ -1,11 +1,16 @@
-<h1>Star Wars Species</h1>
-<p>Filter</p>
-@if (species$ | async; as species) {
-    <div class="list planet-list">
-        @for (item of species; track $index) {
-            <app-species-card [species]="item" [page]="pageControl.page" [index]="$index"></app-species-card>
-        } @empty {
-            loading...
-        }
-    </div>
-}
+<app-page-title background="assets/images/species/title-background.gif">
+    Species
+</app-page-title>
+<div class="container">
+    @if (species$ | async; as species) {
+        <div class="list species-list">
+            @for (item of species; track $index) {
+                <app-species-card [species]="item" [page]="pageControl.page" [index]="$index"></app-species-card>
+            } @empty {
+                <div>no entries found</div>
+            }
+        </div>
+    } @else {
+        <app-loading></app-loading>
+    }
+</div>

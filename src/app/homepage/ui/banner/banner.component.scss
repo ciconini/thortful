@@ -2,30 +2,53 @@
 @import "mixins";
 @import "components/buttons";
 
-.banner {
+.slider {
     height: 100%;
-    width: 100%;
+    display: flex;
+    align-items: stretch;
+}
+
+.banner {
+    border-left: 3px solid darken($primary, 20%);
+    border-bottom: 3px solid darken($primary, 20%);
+    height: 100%;
+    flex-grow: 1;
     background-repeat: no-repeat;
     background-size: cover;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
     position: relative;
+    transition: flex-grow .3s ease-out;
+    cursor: pointer;
     h2 {
-        font-size: 42px;
+        font-size: 18px;
         text-transform: uppercase;
         letter-spacing: 2px;
         font-weight: 300;
         color: $white;
-        margin-bottom: 50px;
-        position: relative;
+        margin-bottom: 0;
+        position: absolute;
         z-index: 1;
+        background-color: darken($primary, 20%);
+        display: block;
+        bottom: 0;
+        left: 0;
+        width: 120px;
+        height: 30px;
+        transition: all .3s ease-out;
+        padding-left: 5px;
+        &::after {
+            @include pseudo;
+            width: 0px;
+            height: 0px;
+            border: 15px solid transparent;
+            border-left-color: darken($primary, 20%);
+            border-bottom-color: darken($primary, 20%);
+            right: -30px;
+            bottom: 0;
+            transition: all .3s ease-out;
+        }
     }
-    .button {
-        position: relative;
-        z-index: 1;
-
+    &:first-child {
+        border-left: 0;
     }
     &::before {
         @include pseudo;
@@ -44,5 +67,17 @@
         height: 100%;
         background: rgb(16,21,29);
         background: linear-gradient(to top, #0A0D13 0%, #10151d00 100%);
+    }
+    &:hover {
+        flex-grow: 3;
+        transition: all .3s ease-out;
+        filter: brightness(2);
+        z-index: 2;
+        h2 {
+            transition: all .3s ease-out;
+            &:after {
+                transition: all .3s ease-out;
+            }
+        }
     }
 }

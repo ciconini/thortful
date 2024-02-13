@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common'
   styleUrl: './homepage.component.scss'
 })
 export class HomepageComponent implements OnInit{
-  banners$: Observable<Banner[]> = new Observable();
+  banners: Banner[] = [];
 
   constructor() {}
 
@@ -21,24 +21,38 @@ export class HomepageComponent implements OnInit{
   }
 
   private startBanners() {
-    let banners: Banner[] = [
+    this.banners = [
       {
         title: "Films",
         link: "/films",
         image: "/films/title-background.gif"
       },
-      // {
-      //   title: "Vehicles",
-      //   link: "/vehicles",
-      //   image: "/vehicles/title-background.gif"
-      // },
-      // {
-      //   title: "Planets",
-      //   link: "/planets",
-      //   image: "/planets/title-background.gif"
-      // },
+      {
+        title: "Vehicles",
+        link: "/vehicles",
+        image: "/vehicles/title-background.gif"
+      },
+      {
+        title: "Planets",
+        link: "/planets",
+        image: "/planets/title-background.gif"
+      },
+      {
+        title: "Species",
+        link: "/species",
+        image: "/species/title-background.gif"
+      },
+      {
+        title: "People",
+        link: "/people",
+        image: "/people/title-background.gif"
+      },
+      {
+        title: "Starships",
+        link: "/starships",
+        image: "/starships/title-background.gif"
+      },
     ]
-    this.banners$ = of(banners);
   }
 
 }

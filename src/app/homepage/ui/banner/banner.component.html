@@ -1,4 +1,10 @@
-<div class="banner" [ngStyle]="{'background-image': 'url(assets/images'+banner.image+')'}">
-    <h2>{{banner.title}}</h2>
-    <a [routerLink]="[banner.link]" class="button">See more</a>
+<div class="slider" >
+    @for (banner of banners; track $index) {
+        <div class="banner" [routerLink]="[banner.link]" [ngStyle]="{'background-image': getSlideUrl($index)}" >
+            <h2>{{banner.title}}</h2>
+            <!-- <a [routerLink]="[banner.link]" class="button">See more</a> -->
+        </div>
+    } @empty {
+        no slide
+    }
 </div>

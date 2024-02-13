@@ -11,7 +11,10 @@ import { CommonModule } from '@angular/common'
   styleUrl: './banner.component.scss'
 })
 export class BannerComponent {
-  @Input() banner!: Banner;
-  @Input() position!: number;
+  @Input() banners: Banner[] = [];
+
+  getSlideUrl(i: number): string {
+    return `url(assets/images${this.banners[i].image})`;
+  }
 
 }

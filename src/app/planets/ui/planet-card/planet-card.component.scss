@@ -1,11 +1,6 @@
-@import 'variables';
+
 .planet-card {
-    text-decoration: none;
     .planet-image {
-        margin: 0 auto;
-        padding: 10px;
-        border: 2px solid darken($primary, 20%);
-        transition: all .2s;
         width: 200px;
         height: 200px;
         border-radius: 100px;
@@ -13,24 +8,6 @@
             width: 180px;
             height: 180px;
             border-radius: 90px;
-        }
-    }
-    .planet-name {
-        text-align: center;
-        transition: all .2s;
-        padding-top: .5rem;
-        color: darken($white, 20%);
-        letter-spacing: 1px;
-    }
-    &:hover {
-        .planet-image {
-            filter: brightness(1.5);
-            // box-shadow: 0 0 4px 2px $primary, inset 0 0 3px 1px $primary;
-            transition: all .2s;
-        }
-        .planet-name {
-            transition: all .2s;
-            color: $white;
         }
     }
 }

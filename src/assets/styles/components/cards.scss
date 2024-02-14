@@ -1,0 +1,30 @@
+
+a[class*="-card"] {
+    text-decoration: none;
+    div[class*="-image"] {
+        margin: 0 auto;
+        padding: 10px;
+        outline: 3px solid darken($primary, 20%);
+        transition: all .2s;
+        img {
+            object-fit: cover;
+        }
+    }
+    div[class*="-name"] {
+        text-align: center;
+        transition: all .2s;
+        padding-top: .5rem;
+        color: darken($white, 20%);
+        letter-spacing: 1px;
+    }
+    &:hover {
+        div[class*="-image"] {
+            filter: brightness(1.5);
+            transition: all .2s;
+        }
+        div[class*="-name"] {
+            transition: all .2s;
+            color: $white;
+        }
+    }
+}

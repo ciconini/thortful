@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Film } from '../../util/model/film'
 import { RouterModule } from '@angular/router'
-import { ObjectId } from '../../../shared/util/method/object-id'
+import { ObjectId } from '../../../shared/util/data-method/object-id'
+import { UrlUtil } from '../../../shared/util/data-method/url'
 
 @Component({
   selector: 'app-film-card',
@@ -16,12 +17,9 @@ export class FilmCardComponent {
   @Input() page!: number;
 
   constructor(
-    private readonly util: ObjectId
+    private readonly util: ObjectId,
+    public readonly url: UrlUtil
   ) { }
-
-  normalizeUrl(name: string): string {
-    return "assets/images/films/" + name.toLowerCase().replace(/ /g, "-") + ".jpg";
-  }
 
   getId(index: number): number {
     return this.util.getId(index, this.page)

@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Vehicle } from '../../util/model/vehicle'
 import { RouterModule } from '@angular/router'
-import { ObjectId } from '../../../shared/util/method/object-id'
+import { ObjectId } from '../../../shared/util/data-method/object-id'
 import { ImgFallbackDirective } from '../../../shared/util/directives/imageFallback'
 
 @Component({

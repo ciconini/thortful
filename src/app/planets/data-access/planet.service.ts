@@ -14,10 +14,10 @@ export class PlanetService {
     private readonly http: HttpClient
   ) { }
 
-  getPlanets(pageControl: PageControl): Observable<Planet[]> {
+  getPlanets(pageControl: PageControl): Observable<PlanetResponse> {
     return this.http.get<PlanetResponse>(`${environment.api}/planets?page=${pageControl.page}`).pipe(
       map(response => {
-        return response.results
+        return response
       }),
       catchError((error: HttpErrorResponse) => {
         console.error("Request error", error)

@@ -14,10 +14,10 @@ export class StarshipsService {
     private readonly http: HttpClient
   ) { }
 
-  getStarships(pageControl: PageControl): Observable<Starship[]> {
+  getStarships(pageControl: PageControl): Observable<StarshipResponse> {
     return this.http.get<StarshipResponse>(`${environment.api}/starships?page=${pageControl.page}`).pipe(
       map(response => {
-        return response.results
+        return response
       }),
       catchError((error: HttpErrorResponse) => {
         console.error("Request error", error)

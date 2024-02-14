@@ -14,10 +14,10 @@ export class SpeciesService {
     private readonly http: HttpClient
   ) { }
 
-  getSpecies(pageControl: PageControl): Observable<Species[]> {
+  getSpecies(pageControl: PageControl): Observable<SpeciesResponse> {
     return this.http.get<SpeciesResponse>(`${environment.api}/species?page=${pageControl.page}`).pipe(
       map(response => {
-        return response.results
+        return response
       }),
       catchError((error: HttpErrorResponse) => {
         console.error("Request error", error)

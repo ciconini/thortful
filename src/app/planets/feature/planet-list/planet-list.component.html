@@ -2,15 +2,19 @@
     Planets
 </app-page-title>
 
+
 <div class="container">
-    @if (planets$ | async; as planets) {
+    @if (planets && !loading) {
         <div class="list planet-list">
             @for (planet of planets; track $index) {
                 <app-planet-card [planet]="planet" [page]="pageControl.page" [index]="$index"></app-planet-card>
             } @empty {
-                loading...
+                no entries found
             }
         </div>
+        @if (pageControl.count > 10) {
+            <app-pagination [pageControl]="pageControl" (goPage)="goToPage($event)"></app-pagination>
+        }
     } @else {
         <app-loading></app-loading>
     }

@@ -2,7 +2,7 @@
     Species
 </app-page-title>
 <div class="container">
-    @if (species$ | async; as species) {
+    @if (species && !loading) {
         <div class="list species-list">
             @for (item of species; track $index) {
                 <app-species-card [species]="item" [page]="pageControl.page" [index]="$index"></app-species-card>
@@ -10,6 +10,9 @@
                 <div>no entries found</div>
             }
         </div>
+        @if (pageControl.count > 10) {
+            <app-pagination [pageControl]="pageControl" (goPage)="goToPage($event)"></app-pagination>
+        }
     } @else {
         <app-loading></app-loading>
     }

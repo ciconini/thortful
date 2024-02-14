@@ -2,13 +2,18 @@
     Vehicles
 </app-page-title>
 <div class="container">
-    @if (vehicles$ | async; as vehicles) {
+    @if (vehicles && !loading) {
         <div class="list vehicle-list">
             @for (vehicle of vehicles; track $index) {
                 <app-vehicle-card [vehicle]="vehicle" [page]="pageControl.page" [index]="$index"></app-vehicle-card>
             } @empty {
-                loading...
+                no entries found...
             }
         </div>
+        @if (pageControl.count > 10) {
+            <app-pagination [pageControl]="pageControl" (goPage)="goToPage($event)"></app-pagination>
+        }
+    } @else {
+        <app-loading></app-loading>
     }
 </div>

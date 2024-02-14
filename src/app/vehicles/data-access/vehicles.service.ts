@@ -14,10 +14,10 @@ export class VehiclesService {
     private readonly http: HttpClient
   ) { }
 
-  getVehicles(pageControl: PageControl): Observable<Vehicle[]> {
+  getVehicles(pageControl: PageControl): Observable<VehicleResponse> {
     return this.http.get<VehicleResponse>(`${environment.api}/vehicles?page=${pageControl.page}`).pipe(
       map(response => {
-        return response.results
+        return response
       }),
       catchError((error: HttpErrorResponse) => {
         console.error("Request error", error)

@@ -14,10 +14,10 @@ export class PeopleService {
     private readonly http: HttpClient
   ) { }
 
-  getPeople(pageControl: PageControl): Observable<Person[]> {
+  getPeople(pageControl: PageControl): Observable<PeopleResponse> {
     return this.http.get<PeopleResponse>(`${environment.api}/people?page=${pageControl.page}`).pipe(
       map(response => {
-        return response.results
+        return response
       }),
       catchError((error: HttpErrorResponse) => {
         console.error("Request error", error)

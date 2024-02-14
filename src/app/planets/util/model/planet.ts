@@ -1,8 +1,8 @@
 export interface PlanetResponse {
-    count: number
-    next?: string
-    previous?: string
-    results: Planet[]
+    count: number;
+    next?: string;
+    previous?: string;
+    results: Planet[];
   }
   
   export interface Planet {

@@ -14,10 +14,10 @@ export class FilmService {
     private readonly http: HttpClient
   ) { }
 
-  getFilms(pageControl: PageControl): Observable<Film[]> {
+  getFilms(pageControl: PageControl): Observable<FilmResponse> {
     return this.http.get<FilmResponse>(`${environment.api}/films?page=${pageControl.page}`).pipe(
       map(response => {
-        return response.results
+        return response
       }),
       catchError((error: HttpErrorResponse) => {
         console.error("Request error", error)

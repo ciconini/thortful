@@ -1,0 +1,11 @@
+<div class="pagination">
+    <button class="arrow arrow-left" (click)="goToPrevPage()" [disabled]="pageControl.page === 1"><i class="fa-solid fa-arrow-left"></i></button>
+    <ul class="page-list">
+        @for (page of pages; track $index) {
+            <li class="page-item" [ngClass]="{'active': pageControl.page === page}" (click)="goToPage(page)">
+                {{page}}
+            </li>
+        }
+    </ul>
+    <button class="arrow arrow-right" (click)="goToNextPage()" [disabled]="pageControl.page === pages.length"><i class="fa-solid fa-arrow-right"></i></button>
+</div>

@@ -4,8 +4,7 @@
     .planet-image {
         margin: 0 auto;
         padding: 10px;
-        border: 1px solid darken($white, 20%);
-        box-shadow: 0 0 4px 2px darken($primary, 20%), inset 0 0 3px 1px darken($primary, 20%);
+        border: 2px solid darken($primary, 20%);
         transition: all .2s;
         width: 200px;
         height: 200px;
@@ -25,8 +24,8 @@
     }
     &:hover {
         .planet-image {
-            border-color: $white;
-            box-shadow: 0 0 4px 2px $primary, inset 0 0 3px 1px $primary;
+            filter: brightness(1.5);
+            // box-shadow: 0 0 4px 2px $primary, inset 0 0 3px 1px $primary;
             transition: all .2s;
         }
         .planet-name {

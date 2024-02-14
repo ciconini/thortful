@@ -2,14 +2,17 @@
     Films
 </app-page-title>
 <div class="container">
-    @if (films$ | async; as films) {
+    @if (films && !loading) {
         <div class="list film-list">
             @for (film of films; track $index) {
                 <app-film-card [film]="film" [page]="pageControl.page" [index]="$index"></app-film-card>
             } @empty {
-                <div>no entries</div>
+                no entries found...
             }
         </div>
+        @if (pageControl.count > 10) {
+            <app-pagination [pageControl]="pageControl" (goPage)="goToPage($event)"></app-pagination>
+        }
     } @else {
         <app-loading></app-loading>
     }

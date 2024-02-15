@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Banner } from '../../util/model/banner'
 import { RouterModule } from '@angular/router'
 import { CommonModule } from '@angular/common'
+import { MenuService } from '../../../shared/util/model/menu'
 
 @Component({
   selector: 'app-banner',
@@ -16,5 +17,7 @@ export class BannerComponent {
   getSlideUrl(i: number): string {
     return `url(assets/images${this.banners[i].image})`;
   }
+
+  constructor(public readonly menu: MenuService) {}
 
 }

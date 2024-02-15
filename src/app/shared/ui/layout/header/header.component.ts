@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common'
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router'
+import { Menu, MenuService } from '../../../util/model/menu'
 
 @Component({
   selector: 'app-header',
@@ -10,41 +11,12 @@ import { RouterModule } from '@angular/router'
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
-  menu: Menu[] = [
-    {
-      label: "Films",
-      link: "/films"
-    },
-    {
-      label: "People",
-      link: "/people"
-    },
-    {
-      label: "Planets",
-      link: "/planets"
-    },
-    {
-      label: "Starships",
-      link: "/starships"
-    },
-    {
-      label: "Vehicles",
-      link: "/vehicles"
-    },
-    {
-      label: "Species",
-      link: "/species"
-    },
-  ];
   showMenu: boolean = false;
+
+  constructor(public menu: MenuService) {}
 
   toggleMenu(): void {
     this.showMenu = !this.showMenu;
   }
 
-}
-
-interface Menu {
-  label: string;
-  link: string;
 }

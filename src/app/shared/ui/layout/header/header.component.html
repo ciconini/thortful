@@ -13,13 +13,13 @@
                     </a>
                 </div>
             </div>
-            <div class="col-md-8 col-lg-6 col-12 nav-column" [ngClass]="{'show-menu': showMenu}">
+            <div class="col-lg-9 col-12 nav-column" [ngClass]="{'show-menu': showMenu}">
                 <nav class="nav-menu">
-                    <ul class="menu">
-                        @for (item of menu; track $index) {
+                    <ul class="menu d-flex">
+                        @for (menu of menu.menuItems; track $index) {
                             <li class="menu-item">
-                                <a class="menu-link" [routerLink]="[item.link]" routerLinkActive="active">
-                                    {{item.label}}
+                                <a class="menu-link" [routerLink]="[menu.link]" routerLinkActive="active">
+                                    {{menu.label}}
                                 </a>
                             </li>
                         }

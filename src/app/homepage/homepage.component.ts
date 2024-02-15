@@ -21,43 +21,7 @@ export class HomepageComponent implements OnInit{
   constructor(private readonly service: HomepageService) {}
 
   ngOnInit(): void {
-    this.startBanners();
     this.startPosts();
-  }
-
-  private startBanners(): void {
-    this.banners = [
-      {
-        title: "Films",
-        link: "/films",
-        image: "/films/title-background.gif"
-      },
-      {
-        title: "Vehicles",
-        link: "/vehicles",
-        image: "/vehicles/title-background.gif"
-      },
-      {
-        title: "Planets",
-        link: "/planets",
-        image: "/planets/title-background.gif"
-      },
-      {
-        title: "Species",
-        link: "/species",
-        image: "/species/title-background.gif"
-      },
-      {
-        title: "People",
-        link: "/people",
-        image: "/people/title-background.gif"
-      },
-      {
-        title: "Starships",
-        link: "/starships",
-        image: "/starships/title-background.gif"
-      },
-    ]
   }
 
   private startPosts(): void {

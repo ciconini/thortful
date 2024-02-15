@@ -1,10 +1,15 @@
-<div class="slider" >
-    @for (banner of banners; track $index) {
-        <div class="banner" [routerLink]="[banner.link]" [ngStyle]="{'background-image': getSlideUrl($index)}" >
-            <h2>{{banner.title}}</h2>
-            <!-- <a [routerLink]="[banner.link]" class="button">See more</a> -->
+<div class="homepage-banner">
+    <div class="video">
+        <video id="bg-video" autoplay muted loop>
+            <source src="assets/videos/home-background.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div class="content">
+        <h1>Star Wars wiki</h1>
+        <div class="resource-list">
+            @for (menu of menu.menuItems; track $index) {
+                <a [routerLink]="[menu.link]" class="btn">{{menu.label}}</a>
+            }
         </div>
-    } @empty {
-        no slide
-    }
+    </div>
 </div>

@@ -3,13 +3,14 @@
         <app-banner [banners]="banners"></app-banner>
     </div>
 </section>
+
 <section id="homepage-about">
     <div class="container">
         <div class="row">
-            <div class="col-md-4 offset-md-1">
+            <div class="col-md-4 offset-md-1 col-sm-4">
                 <img class="logo-img" src="assets/images/star-wars-logo.png" alt="Star Wars">
             </div>
-            <div class="col-md-6 pt-4">
+            <div class="col-md-6 pt-4 col-sm-8">
                 <p>
                     Star Wars is an American epic space opera media franchise 
                     created by George Lucas, which began with the eponymous 1977 film 
@@ -25,5 +26,23 @@
                 </p>
             </div>
         </div>
+    </div>
+</section>
+
+<section id="news">
+    <div class="container">
+        @defer (on viewport) {
+            <div class="section-title">
+                <h2>News</h2>
+                <a href="" class="title-link" target="_blank">
+                    See more <i class="fa-solid fa-angle-right"></i>
+                </a>
+            </div>
+            @if (newsPosts$ | async; as newsPosts) {
+                <app-news [posts]="newsPosts"></app-news>
+            }
+        } @placeholder {
+            <span>loading news</span>
+        }
     </div>
 </section>

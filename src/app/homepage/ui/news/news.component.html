@@ -1,0 +1,12 @@
+<div class="news-list">
+    @for (post of posts; track $index) {
+        <div class="post post-{{$index}}">
+            <a [href]="post.url">
+                <div class="post-image" [ngStyle]="{'background-image': getImg(post.image)}"></div>
+                <div class="post-title">
+                    {{post.title}}
+                </div>
+            </a>
+        </div>
+    }
+</div>

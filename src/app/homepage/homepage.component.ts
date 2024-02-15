@@ -3,24 +3,29 @@ import { BannerComponent } from './ui/banner/banner.component'
 import { Observable, interval, of } from 'rxjs'
 import { Banner } from './util/model/banner'
 import { CommonModule } from '@angular/common'
+import { Post } from './util/model/post'
+import { NewsComponent } from './ui/news/news.component'
+import { HomepageService } from './data-access/homepage.service'
 
 @Component({
   selector: 'app-homepage',
   standalone: true,
-  imports: [CommonModule, BannerComponent],
+  imports: [CommonModule, BannerComponent, NewsComponent],
   templateUrl: './homepage.component.html',
   styleUrl: './homepage.component.scss'
 })
 export class HomepageComponent implements OnInit{
   banners: Banner[] = [];
+  newsPosts$: Observable<Post[]> = new Observable;
 
-  constructor() {}
+  constructor(private readonly service: HomepageService) {}
 
   ngOnInit(): void {
     this.startBanners();
+    this.startPosts();
   }
 
-  private startBanners() {
+  private startBanners(): void {
     this.banners = [
       {
         title: "Films",
@@ -53,6 +58,10 @@ export class HomepageComponent implements OnInit{
         image: "/starships/title-background.gif"
       },
     ]
+  }
+
+  private startPosts(): void {
+    this.newsPosts$ = this.service.getPosts();
   }
 
 }

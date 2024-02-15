@@ -7,46 +7,94 @@ header {
     backdrop-filter: blur(10px);
     background: $bg-header;
     z-index: 3;
+    .header-column {
+        z-index: 2;
+    }
+    .toggle-menu {
+        border: 0;
+        background: transparent;
+        color: $white;
+        font-size: 24px;
+        width: 55px;
+        height: 55px;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
     .logo-img {
         width: 180px;
         margin-top: 16px;
+        @include responsive(max-sm) {
+            margin-bottom: 16px;
+        }
     }
-    .nav-menu {
-        .menu {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            .menu-item {
-                margin: 0 8px;
-                a {
-                    display: block;
-                    padding: 16px 8px;
-                    position: relative;
-                    text-decoration: none;
-                    text-transform: uppercase;
-                    color: $nav-color;
-                    letter-spacing: 1px;
-                    &::before {
-                        @include pseudo;
-                        width: 1px;
-                        height: 2px;
-                        background-color: $primary;
-                        bottom: -1px;
-                        left: 50%;
-                        transition: transform .5s;
-                        opacity: 0;
-                    }
-                    &:hover, &.active {
-                        color: $nav-color-hover;
+    .nav-column {
+        z-index: 1;
+        .nav-menu {
+            .menu {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                .menu-item {
+                    margin: 0 8px;
+                    a {
+                        display: block;
+                        padding: 16px 8px;
+                        position: relative;
+                        text-decoration: none;
+                        text-transform: uppercase;
+                        color: $nav-color;
+                        letter-spacing: 1px;
+                        font-size: 16px;
                         &::before {
-                            opacity: 1;
-                            transform: scaleX(30);
-                            transition: transform .3s;
+                            @include pseudo;
+                            width: 1px;
+                            height: 2px;
+                            background-color: $primary;
+                            bottom: -1px;
+                            left: 50%;
+                            transition: transform .5s;
+                            opacity: 0;
+                            @include responsive(max-sm) {
+                                display: none
+                            }
+                        }
+                        &:hover, &.active {
+                            color: $nav-color-hover;
+                            &::before {
+                                opacity: 1;
+                                transform: scaleX(30);
+                                transition: transform .3s;
+                            }
+                        }
+                        @include responsive(max-sm) {
+                            font-size: 18px;
+                            padding: 24px 16px;
                         }
                     }
                 }
+                @include responsive(max-sm) {
+                    flex-direction: column;
+                }
+            }
+            @include responsive(max-sm) {
+            }
+        }
+        @include responsive(max-sm) {
+            position: absolute;
+            background: $dark1;
+            transform-origin: 50% top;
+            transform: translateY(calc(-100% - 55px));
+            top: 55px;
+            transition: transform .3s ease-in-out;
+            box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+            &.show-menu {
+                display: block;
+                transform: translateY(0);
+                transition: transform .3s ease-in-out, box-shadow .3s ease-in-out;
+                box-shadow: 0 80px 50px 20px rgba(0, 0, 0, 0.3);
             }
         }
     }

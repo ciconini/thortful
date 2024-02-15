@@ -1,14 +1,19 @@
 <header>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-3 d-sm-none header-column">
+                <button class="toggle-menu" (click)="toggleMenu()">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+            <div class="col-md-3 col-6 header-column">
                 <div class="logo">
                     <a href="/">
                         <img src="assets/images/star-wars-logo.svg" class="logo-img" alt="Star Wars Logo">
                     </a>
                 </div>
             </div>
-            <div class="col-md-8 col-lg-6">
+            <div class="col-md-8 col-lg-6 col-12 nav-column" [ngClass]="{'show-menu': showMenu}">
                 <nav class="nav-menu">
                     <ul class="menu">
                         @for (item of menu; track $index) {

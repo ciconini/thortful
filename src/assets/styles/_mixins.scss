@@ -1,3 +1,5 @@
+@import 'config/breakpoints';
+
 @mixin pseudo {
     content: "";
     display: block;
@@ -7,4 +9,62 @@
 @mixin d-grid($width) {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax($width, 1fr));
+}
+
+@mixin responsive($size) {
+	
+	@if ($size == max-xxl){
+		@media screen and (max-width:#{$max-xxl}){
+			@content;
+		}
+	}
+	@if ($size == min-lg){
+		@media screen and (min-width:#{$min-xxl}){
+			@content;
+		}	
+	}
+	
+	@if ($size == max-xl){
+		@media screen and (max-width:#{$max-xl}){
+			@content;
+		}
+	}
+	@if ($size == min-xl){
+		@media screen and (min-width:#{$min-xl}){
+			@content;
+		}	
+	}
+	
+	@if ($size == max-lg){
+		@media screen and (max-width:#{$max-lg}){
+			@content;
+		}
+	}
+	@if ($size == min-lg){
+		@media screen and (min-width:#{$min-lg}){
+			@content;
+		}	
+	}
+	
+    @if ($size == max-md){
+        @media screen and (max-width:#{$max-md}){
+            @content;
+        }	
+    }
+	@if ($size == min-md){
+		@media screen and (min-width:#{$min-md}){
+			@content;
+		}	
+	}
+	
+	@if ($size == max-sm){
+		@media screen and (max-width:#{$max-sm}){
+			@content; 
+		}
+	}
+	@if ($size == min-sm){
+		@media screen and (min-width:#{$min-sm}){
+			@content;
+		}
+	}
 }

@@ -9,5 +9,8 @@
         gap: 1.5rem;
         row-gap: 3rem;
         margin-top: -40px;
+        @include responsive(max-sm) {
+            grid-template-columns: 1fr 1fr;
+        }
     }
 }

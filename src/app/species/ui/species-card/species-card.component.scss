@@ -1,4 +1,4 @@
-
+@import "mixins";
 .species-card {
     text-decoration: none;
     .species-image {
@@ -7,6 +7,14 @@
         img {
             width: 180px;
             height: 220px;
+            @include responsive(max-sm) {
+                width: 100%;
+                height: auto;
+            }
+        }
+        @include responsive(max-sm) {
+            width: 100%;
+            height: auto;
         }
     }
 }

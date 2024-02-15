@@ -1,0 +1,18 @@
+// breakpoints config
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+$xxl: 1400px;
+
+$min-sm:  $sm;
+$min-md:  $md;
+$min-lg:  $lg;
+$min-xl:  $xl;
+$min-xxl: $xxl;
+
+$max-sm:  $sm - 1;
+$max-md:  $md - 1;
+$max-lg:  $lg - 1;
+$max-xl:  $xl - 1;
+$max-xxl: $xxl - 1;

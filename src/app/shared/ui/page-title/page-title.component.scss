@@ -14,6 +14,11 @@
             color: $white;
             font-weight: 300;
             text-transform: uppercase;
+            @include responsive(max-md) {
+                letter-spacing: 4px;
+                text-align: center;
+                font-size: 42px;
+            }
         }
     }
     &::after {

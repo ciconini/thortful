@@ -1,18 +1,18 @@
 @import 'variables';
 
 .pagination {
-    margin: 42px 0;
+    margin: 42px;
     display: flex;
     align-items: center;
     justify-content: center;
     .arrow {
-        color: $white;
+        color: $nav-color;
         cursor: pointer;
         font-size: 16px;
         background: transparent;
         border: 0;
         &:hover {
-            color: $primary;
+            color: $white;
         }
         &:disabled {
             opacity: .6;
@@ -28,20 +28,19 @@
         margin: 0 16px;
         .page-item {
             cursor: pointer;
-            width: 32px;
-            padding: 5px 0;
-            text-align: center;
-            border: 1px solid $white;
+            width: 6px;
+            height: 6px;
+            border: 1px solid $nav-color;
+            border-radius: 3px;
             margin: 0 4px;
-            color: $white;
             &:hover {
                 border-color: $primary;
-                color: $primary;
+                background-color: $primary;
             }
             &.active {
-                background-color: $primary;
-                border-color: $primary;
-                color: $dark1;
+                background-color: $white;
+                border-color: $white;
+                width: 16px;
             }
         }
     }

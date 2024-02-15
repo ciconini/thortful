@@ -1,5 +1,17 @@
+@import 'variables';
+
 .main-banner {
     padding-top: 56px;
     height: 500px;
     background: black;
+}
+#homepage-about {
+    padding: 60px 0;
+    box-shadow: inset 0 8px 8px rgba(0, 0, 0, .5);
+    .logo-img {
+        width: 100%;
+    }
+    p {
+        line-height: 1.8;
+    }
 }

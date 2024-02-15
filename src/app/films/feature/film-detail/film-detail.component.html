@@ -7,7 +7,7 @@
                     <source src="assets/videos/films/{{url.getSlug(film.title)}}.mp4" type="video/mp4">
                 </video>
             </div>
-            <div class="back">
+            <div class="back" [routerLink]="['/films']">
                 <i class="fa-solid fa-angle-left"></i> Back to Films
             </div>
         </section>

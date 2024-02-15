@@ -7,7 +7,7 @@
     overflow: hidden;
     position: relative;
     background-size: cover;
-    background-size: center center;
+    background-position: center center;
     .background {
         position: absolute;
         width: 100%;
@@ -24,6 +24,13 @@
         height: 100%;
         background: rgb(21,26,36);
         background: linear-gradient(to top, rgba(21,26,36,1) 0%, rgba(21,26,36,0.4) 80%, rgba(21,26,36,0.7) 100%);
+    }
+    .back {
+        color: $white;
+        position: absolute;
+        top: 80px;
+        left: 40px;
+        z-index: 2;
     }
 }
 section#content {

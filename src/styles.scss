@@ -38,10 +38,8 @@ html {scroll-behavior: smooth;}
 html, body { height: 100%;}
 body { margin: 0; font-family: "Open Sans", "Helvetica Neue", Arial, sans-serif; box-sizing: border-box; }
 body {
-  // background-image: url(assets/images/background.webp);
-  // background-size: cover;
-  // background-repeat: no-repeat;
   background-color: #151A24;
+  color: #ffffff;
 }
 @import "variables";
 @import "assets/styles/components/cards.scss";

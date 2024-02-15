@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router'
+import { ActivatedRoute, Params, RouterModule } from '@angular/router'
 import { Observable } from 'rxjs'
 import { CommonModule } from '@angular/common'
 import { FilmService } from '../../data-access/film.service'
@@ -11,7 +11,7 @@ import { LoadingComponent } from '../../../shared/ui/loading/loading.component'
 @Component({
   selector: 'app-film-detail',
   standalone: true,
-  imports: [CommonModule, LoadingComponent],
+  imports: [CommonModule, LoadingComponent, RouterModule],
   templateUrl: './film-detail.component.html',
   styleUrl: './film-detail.component.scss'
 })

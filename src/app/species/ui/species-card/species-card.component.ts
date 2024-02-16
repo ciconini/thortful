@@ -23,7 +23,9 @@ export class SpeciesCardComponent implements OnInit{
   ) { }
 
   ngOnInit(): void {
-    this.imageUrl = this.normalizeUrl(this.species.name)
+    if (this.species) {
+      this.imageUrl = this.normalizeUrl(this.species.name) || "";
+    }
   }
 
   normalizeUrl(name: string): string {

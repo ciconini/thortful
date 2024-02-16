@@ -3,6 +3,7 @@ import { Person } from '../../util/model/people'
 import { RouterModule } from '@angular/router'
 import { ObjectId } from '../../../shared/util/data-method/object-id'
 import { ImgFallbackDirective } from '../../../shared/util/directives/imageFallback'
+import { UrlUtil } from '../../../shared/util/data-method/url'
 
 @Component({
   selector: 'app-person-card',
@@ -17,12 +18,9 @@ export class PersonCardComponent {
   @Input() page!: number;
 
   constructor(
-    private readonly util: ObjectId
+    private readonly util: ObjectId,
+    public readonly url: UrlUtil
   ) { }
-
-  normalizeUrl(name: string): string {
-    return "assets/images/people/" + name.toLowerCase().replace(/ /g, "-") + ".jpg";
-  }
 
   getId(index: number): number {
     return this.util.getId(index, this.page)

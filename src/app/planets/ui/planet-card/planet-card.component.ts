@@ -3,6 +3,7 @@ import { Planet } from '../../util/model/planet'
 import { RouterModule } from '@angular/router'
 import { ObjectId } from '../../../shared/util/data-method/object-id'
 import { ImgFallbackDirective } from '../../../shared/util/directives/imageFallback'
+import { UrlUtil } from '../../../shared/util/data-method/url'
 
 @Component({
   selector: 'app-planet-card',
@@ -17,12 +18,9 @@ export class PlanetCardComponent {
   @Input() page!: number;
 
   constructor(
-    private readonly util: ObjectId
+    private readonly util: ObjectId,
+    public readonly url: UrlUtil
   ) { }
-
-  normalizeUrl(name: string): string {
-    return "assets/images/planets/" + name.toLowerCase().replace(" ", "-") + ".jpg";
-  }
 
   getId(index: number): number {
     return this.util.getId(index, this.page)

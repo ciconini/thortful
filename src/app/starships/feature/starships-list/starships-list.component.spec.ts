@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { StarshipsListComponent } from './starships-list.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing'
+import { ActivatedRouteStub } from '../../../shared/util/model/activatedroute-mock'
+import { ActivatedRoute } from '@angular/router'
 
 describe('StarshipsListComponent', () => {
   let component: StarshipsListComponent;
@@ -8,7 +11,8 @@ describe('StarshipsListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [StarshipsListComponent]
+      imports: [StarshipsListComponent, HttpClientTestingModule],
+      providers: [{provide: ActivatedRoute, useClass: ActivatedRouteStub}]
     })
     .compileComponents();
     

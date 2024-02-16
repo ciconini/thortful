@@ -7,12 +7,10 @@ import { FILMS } from '../../data-access/films-mock'
 import { HttpClientTestingModule } from '@angular/common/http/testing'
 import { Observable } from 'rxjs'
 import { By } from '@angular/platform-browser'
-import { Router } from '@angular/router'
 
 describe('FilmDetailComponent', () => {
   let component: FilmDetailComponent, 
     fixture: ComponentFixture<FilmDetailComponent>,
-    el: DebugElement,
     film = FILMS.results[0];
 
   beforeEach(async () => {
@@ -29,7 +27,6 @@ describe('FilmDetailComponent', () => {
       .then(() => {
         fixture = TestBed.createComponent(FilmDetailComponent);
         component = fixture.componentInstance;
-        el = fixture.debugElement;
         fixture.detectChanges();
       });
     

@@ -1,12 +1,14 @@
-<a class="species-card" [routerLink]="['/speciess', getId(index)]">
-    <div class="species-image">
-        @if (species.name) {
-            <img [src]="normalizeUrl(species.name)" appImgFallback="assets/images/placeholder.webp" alt="Planet {{species.name}} Image"/>
-        } @else {
-            <div class="no-image"></div>
-        }
-    </div>
-    <div class="species-name">
-        {{species.name}}
-    </div>
-</a>
+@if (species) {
+    <a class="species-card" [routerLink]="['/species', getId(index)]">
+        <div class="species-image">
+            @if (species.name) {
+                <img [src]="normalizeUrl(species.name)" appImgFallback="assets/images/placeholder.webp" alt="Planet {{species.name}} Image"/>
+            } @else {
+                <div class="no-image"></div>
+            }
+        </div>
+        <div class="species-name">
+            {{species.name}}
+        </div>
+    </a>
+}

@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { VehicleDetailComponent } from './vehicle-detail.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing'
+import { ActivatedRouteStub } from '../../../shared/util/model/activatedroute-mock'
+import { ActivatedRoute } from '@angular/router'
 
 describe('VehicleDetailComponent', () => {
   let component: VehicleDetailComponent;
@@ -8,7 +11,8 @@ describe('VehicleDetailComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [VehicleDetailComponent]
+      imports: [VehicleDetailComponent, HttpClientTestingModule],
+      providers: [{provide: ActivatedRoute, useClass: ActivatedRouteStub}]
     })
     .compileComponents();
     

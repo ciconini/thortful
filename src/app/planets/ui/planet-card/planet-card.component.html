@@ -1,12 +1,14 @@
-<a class="planet-card" [routerLink]="['/planets', getId(index)]">
-    <div class="planet-image">
-        @if (planet.name) {
-            <img [src]="normalizeUrl(planet.name)" appImgFallback="assets/images/placeholder.webp" alt="Planet {{planet.name}} Image"/>
-        } @else {
-            <div class="no-image"></div>
-        }
-    </div>
-    <div class="planet-name">
-        {{planet.name}}
-    </div>
-</a>
+@if (planet) {
+    <a class="planet-card" [routerLink]="['/planets', getId(index)]">
+        <div class="planet-image">
+            @if (planet.name) {
+                <img [src]="url.normalizeUrl(planet.name, 'planets')" appImgFallback="assets/images/placeholder.webp" alt="Planet {{planet.name}} Image"/>
+            } @else {
+                <div class="no-image"></div>
+            }
+        </div>
+        <div class="planet-name">
+            {{planet.name}}
+        </div>
+    </a>
+}

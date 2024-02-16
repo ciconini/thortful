@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SpeciesDetailComponent } from './species-detail.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ActivatedRoute } from '@angular/router'
+import { ActivatedRouteStub } from '../../../shared/util/model/activatedroute-mock'
 
 describe('SpeciesDetailComponent', () => {
   let component: SpeciesDetailComponent;
@@ -8,7 +11,8 @@ describe('SpeciesDetailComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SpeciesDetailComponent]
+      imports: [SpeciesDetailComponent, HttpClientTestingModule],
+      providers: [{provide: ActivatedRoute, useClass: ActivatedRouteStub}]
     })
     .compileComponents();
     

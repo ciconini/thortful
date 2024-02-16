@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FilmListComponent } from './film-list.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing'
+import { ActivatedRouteStub } from '../../../shared/util/model/activatedroute-mock'
+import { ActivatedRoute } from '@angular/router'
 
 describe('FilmListComponent', () => {
   let component: FilmListComponent;
@@ -8,7 +11,8 @@ describe('FilmListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FilmListComponent]
+      imports: [FilmListComponent, HttpClientTestingModule],
+      providers: [{provide: ActivatedRoute, useClass: ActivatedRouteStub}]
     })
     .compileComponents();
     

@@ -3,6 +3,7 @@ import { Vehicle } from '../../util/model/vehicle'
 import { RouterModule } from '@angular/router'
 import { ObjectId } from '../../../shared/util/data-method/object-id'
 import { ImgFallbackDirective } from '../../../shared/util/directives/imageFallback'
+import { UrlUtil } from '../../../shared/util/data-method/url'
 
 @Component({
   selector: 'app-vehicle-card',
@@ -17,12 +18,9 @@ export class VehicleCardComponent {
   @Input() page!: number;
 
   constructor(
-    private readonly util: ObjectId
+    private readonly util: ObjectId,
+    public readonly url: UrlUtil
   ) { }
-
-  normalizeUrl(name: string): string {
-    return "assets/images/vehicles/" + name.toLowerCase().replace(/ /g, "-") + ".jpg";
-  }
 
   getId(index: number): number {
     return this.util.getId(index, this.page)

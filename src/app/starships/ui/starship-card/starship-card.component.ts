@@ -1,8 +1,9 @@
-import { Component, ElementRef, HostListener, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Starship } from '../../util/model/starship'
 import { RouterModule } from '@angular/router'
 import { ObjectId } from '../../../shared/util/data-method/object-id'
 import { ImgFallbackDirective } from '../../../shared/util/directives/imageFallback'
+import { UrlUtil } from '../../../shared/util/data-method/url'
 
 @Component({
   selector: 'app-starship-card',
@@ -11,7 +12,7 @@ import { ImgFallbackDirective } from '../../../shared/util/directives/imageFallb
   templateUrl: './starship-card.component.html',
   styleUrl: './starship-card.component.scss'
 })
-export class StarshipCardComponent implements OnInit {
+export class StarshipCardComponent {
   @Input() starship!: Starship;
   @Input() index!: number;
   @Input() page!: number;
@@ -19,16 +20,9 @@ export class StarshipCardComponent implements OnInit {
   imageUrl: string = "";
 
   constructor(
-    private readonly util: ObjectId
+    private readonly util: ObjectId,
+    public readonly url: UrlUtil
   ) { }
-
-  ngOnInit(): void {
-    this.imageUrl = this.normalizeUrl(this.starship.name)
-  }
-
-  normalizeUrl(name: string): string {
-    return "assets/images/starships/" + name.toLowerCase().replace(/ /g, "-") + ".jpg";
-  }
 
   getId(index: number): number {
     return this.util.getId(index, this.page)

@@ -1,10 +1,12 @@
-<a class="film-card" [routerLink]="['/films', getId(index)]">
-    <div class="film-image">
-        @if (film.title) {
-            <img [src]="url.normalizeUrl(film.title, 'films')" appImgFallback="assets/images/placeholder.webp" alt="Film {{film.title}} Image"/>
-        }
-    </div>
-    <div class="film-name">
-        {{film.title}}
-    </div>
-</a>
+@if (film) {
+    <a class="film-card" [routerLink]="['/films', getId(index)]">
+        <div class="film-image">
+            @if (film.title) {
+                <img [src]="url.normalizeUrl(film.title, 'films')" appImgFallback="assets/images/placeholder.webp" alt="Film {{film.title}} Image"/>
+            }
+        </div>
+        <div class="film-name">
+            {{film.title}}
+        </div>
+    </a>
+}

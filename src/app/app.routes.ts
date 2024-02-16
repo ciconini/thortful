@@ -25,7 +25,7 @@ export const routes: Routes = [
         children: filmRoutes
     },
     {
-        path: "people",
+        path: "characters",
         component: LayoutComponent,
         children: peopleRoutes
     },

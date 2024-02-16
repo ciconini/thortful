@@ -1,6 +1,44 @@
 @defer (on viewport; on timer(5s)) {
     @if (vehicle$ | async; as vehicle){
-        <h1>{{vehicle.name}}</h1>
+        <section id="banner" [ngStyle]="{'background-image': bgImg(vehicle)}">
+            <div class="overflow"></div>
+            <div class="background">
+                <img src="" alt="{{vehicle.name}}">
+            </div>
+            <div class="back" [routerLink]="['/vehicles']">
+                <i class="fa-solid fa-angle-left"></i> Back to Planets
+            </div>
+        </section>
+        <article>
+            <section id="content">
+                <div class="container">
+                    <div class="page-header">
+                        <div class="vehicle-info">
+                            <h1 class="vehicle-title">
+                                {{vehicle.name}}
+                            </h1>
+                            <div class="vehicle-data">
+                                <ul class="data-list">
+                                    <li class="item"><span>Class:</span> {{vehicle.vehicle_class}}</li>
+                                    <li class="item"><span>Model:</span> {{vehicle.model}}</li>
+                                    <li class="item"><span>Manufacturer:</span> {{vehicle.manufacturer}}</li>
+                                    <li class="item"><span>Cost:</span> {{vehicle.cost_in_credits + ' cr'}}</li>
+                                    <li class="item"><span>Length:</span> {{vehicle.length + ' m'}}</li>
+                                    <li class="item"><span>Crew:</span> {{vehicle.crew}}</li>
+                                    <li class="item"><span>Passengers:</span> {{vehicle.passengers}}</li>
+                                    <li class="item"><span>Cargo Capacity:</span> {{vehicle.cargo_capacity + ' kg'}}</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="vehicle-image">
+                            <img [src]="url.normalizeUrl(vehicle.name, 'vehicles')" appImgFallback="assets/images/placeholder.webp" alt="{{vehicle.name}}">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </article>
+    } @else {
+        <app-not-found [item]="'Vehicle'"></app-not-found>
     }
 } @placeholder {
     <div>loading...</div>

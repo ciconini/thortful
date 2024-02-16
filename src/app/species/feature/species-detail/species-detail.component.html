@@ -1,6 +1,44 @@
 @defer (on viewport; on timer(5s)) {
     @if (species$ | async; as species){
-        <h1>{{species.name}}</h1>
+        <section id="banner" [ngStyle]="{'background-image': bgImg(species)}">
+            <div class="overflow"></div>
+            <div class="background">
+                <img src="" alt="{{species.name}}">
+            </div>
+            <div class="back" [routerLink]="['/species']">
+                <i class="fa-solid fa-angle-left"></i> Back to Species
+            </div>
+        </section>
+        <article>
+            <section id="content">
+                <div class="container">
+                    <div class="page-header">
+                        <div class="species-info">
+                            <h1 class="species-title">
+                                {{species.name}}
+                            </h1>
+                            <div class="species-data">
+                                <ul class="data-list">
+                                    <li class="item"><span>Classification:</span> {{species.classification}}</li>
+                                    <li class="item"><span>Language:</span> {{species.language}}</li>
+                                    <li class="item"><span>Av. Height:</span> {{species.average_height + ' cm'}}</li>
+                                    <li class="item"><span>Av. Lifespan:</span> {{species.average_lifespan + ' years'}}</li>
+                                    <li class="item"><span>Designation:</span> {{species.designation}}</li>
+                                    <li class="item"><span>Eye Colors:</span> {{species.eye_colors}}</li>
+                                    <li class="item"><span>Skin Colors:</span> {{species.skin_colors}}</li>
+                                    <li class="item"><span>Hair Colors:</span> {{species.hair_colors}}</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="species-image">
+                            <img [src]="url.normalizeUrl(species.name, 'species')" appImgFallback="assets/images/placeholder.webp" alt="{{species.name}}">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </article>
+    } @else {
+        <app-not-found [item]="'Species'"></app-not-found>
     }
 } @placeholder {
     <div>loading...</div>

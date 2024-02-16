@@ -1,6 +1,49 @@
 @defer (on viewport; on timer(5s)) {
     @if (person$ | async; as person){
-        <h1>{{person.name}}</h1>
+        <section id="banner" [ngStyle]="{'background-image': bgImg(person)}">
+            <div class="overflow"></div>
+            <div class="background">
+                <img src="" alt="{{person.name}}">
+            </div>
+            <div class="back" [routerLink]="['/characters']">
+                <i class="fa-solid fa-angle-left"></i> Back to Characters
+            </div>
+        </section>
+        <article>
+            <section id="content">
+                <div class="container">
+                    <div class="page-header">
+                        <div class="film-info">
+                            <h1 class="film-title">
+                                {{person.name}}
+                            </h1>
+                            <div class="film-data">
+                                <ul class="data-list">
+                                    <li class="item"><span>Gender: </span> 
+                                        <i title="{{person.gender}}" class="fa-solid" 
+                                            [ngClass]="{
+                                                'fa-mars': person.gender === 'male',
+                                                'fa-venus': person.gender === 'female'
+                                                }"></i>
+                                    </li>
+                                    <li class="item"><span>Birth:</span> {{person.birth_year}}</li>
+                                    <li class="item"><span>Weight:</span> {{person.mass + ' kg'}}</li>
+                                    <li class="item"><span>Height:</span> {{person.height + ' cm'}}</li>
+                                    <li class="item"><span>Eye Color:</span> {{person.eye_color}}</li>
+                                    <li class="item"><span>Skin Color:</span> {{person.skin_color}}</li>
+                                    <li class="item"><span>Hair Color:</span> {{person.hair_color}}</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="film-image">
+                            <img [src]="url.normalizeUrl(person.name, 'people')" appImgFallback="assets/images/placeholder.webp" alt="{{person.name}}">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </article>
+    } @else {
+        <app-not-found [item]="'Character'"></app-not-found>
     }
 } @placeholder {
     <div>loading...</div>

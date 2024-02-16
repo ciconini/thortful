@@ -10,8 +10,8 @@ export class MenuService {
           link: "/films"
         },
         {
-          label: "People",
-          link: "/people"
+          label: "Characters",
+          link: "/characters"
         },
         {
           label: "Planets",

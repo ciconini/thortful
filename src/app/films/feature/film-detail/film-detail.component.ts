@@ -7,11 +7,12 @@ import { Film } from '../../util/model/film'
 import { Episode } from '../../../shared/util/data-method/episode'
 import { UrlUtil } from '../../../shared/util/data-method/url'
 import { LoadingComponent } from '../../../shared/ui/loading/loading.component'
+import { NotFoundComponent } from '../../../shared/ui/not-found/not-found.component'
 
 @Component({
   selector: 'app-film-detail',
   standalone: true,
-  imports: [CommonModule, LoadingComponent, RouterModule],
+  imports: [CommonModule, LoadingComponent, RouterModule, NotFoundComponent],
   templateUrl: './film-detail.component.html',
   styleUrl: './film-detail.component.scss'
 })

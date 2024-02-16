@@ -1,59 +1,56 @@
-@defer (on viewport; on timer(5s)) {
-    @if (film$ | async; as film){
-        <section id="banner" [ngStyle]="{'background-image': bgImg(film)}">
-            <div class="overflow"></div>
-            <div class="background">
-                <video id="bg-video" autoplay muted loop>
-                    <source src="assets/videos/films/{{url.getSlug(film.title)}}.mp4" type="video/mp4">
-                </video>
-            </div>
-            <div class="back" [routerLink]="['/films']">
-                <i class="fa-solid fa-angle-left"></i> Back to Films
+@if (film$ | async; as film){
+    <section id="banner" [ngStyle]="{'background-image': bgImg(film)}">
+        <div class="overflow"></div>
+        <div class="background">
+            <video id="bg-video" autoplay muted loop>
+                <source src="assets/videos/films/{{url.getSlug(film.title)}}.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="back" [routerLink]="['/films']">
+            <i class="fa-solid fa-angle-left"></i> Back to Films
+        </div>
+    </section>
+
+    <!-- ARTICLE -->
+    <article>
+        <section id="content">
+            <div class="container">
+                <div class="page-header">
+                    <div class="film-info">
+                        <h1 class="film-title">
+                            <small>{{episode.getEpisode(film.episode_id)}}</small><br/>
+                            <span>{{film.title}}</span>
+                        </h1>
+                        <div class="film-data">
+                            <ul class="data-list">
+                                <li class="item"><span>Release Date:</span> {{film.release_date | date}}</li>
+                                <li class="item"><span>Director:</span> {{film.director}}</li>
+                                <li class="item"><span>Producer:</span> {{film.producer}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="film-image">
+                        <img [src]="url.normalizeUrl(film.title, 'films')" appImgFallback="assets/images/placeholder.webp" alt="{{episode.getEpisode(film.episode_id)}} - {{film.title}}">
+                    </div>
+                </div>
             </div>
         </section>
+    </article>
 
-        <!-- ARTICLE -->
-        <article>
-            <section id="content">
-                <div class="container">
-                    <div class="page-header">
-                        <div class="film-info">
-                            <h1 class="film-title">
-                                <small>{{episode.getEpisode(film.episode_id)}}</small><br/>
-                                {{film.title}}
-                            </h1>
-                            <div class="film-data">
-                                <ul class="data-list">
-                                    <li class="item"><span>Release Date:</span> {{film.release_date | date}}</li>
-                                    <li class="item"><span>Director:</span> {{film.director}}</li>
-                                    <li class="item"><span>Producer:</span> {{film.producer}}</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="film-image">
-                            <img [src]="url.normalizeUrl(film.title, 'films')" appImgFallback="assets/images/placeholder.webp" alt="{{episode.getEpisode(film.episode_id)}} - {{film.title}}">
-                        </div>
-                    </div>
+    <!-- WIP -->
+    <!-- ASIDE -->
+    <!-- <aside>
+        <section id="characters">
+            <div class="container">
+                <div class="section-title">
+                    <h2>
+                        Characters
+                    </h2>
                 </div>
-            </section>
-        </article>
-
-        <!-- WIP -->
-        <!-- ASIDE -->
-        <!-- <aside>
-            <section id="characters">
-                <div class="container">
-                    <div class="section-title">
-                        <h2>
-                            Characters
-                        </h2>
-                    </div>
-                </div>
-            </section>
-        </aside> -->
-    } @else {
-        <app-not-found [item]="'Film'"></app-not-found>
-    }
-} @placeholder {
-    <app-loading></app-loading>
+            </div>
+        </section>
+    </aside> -->
+} @else {
+    <app-not-found [item]="'Film'"></app-not-found>
 }
+    <!-- <app-loading></app-loading> -->

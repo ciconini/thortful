@@ -11,6 +11,7 @@ import { PaginationComponent } from '../../../shared/ui/pagination/pagination.co
 import { Card } from '../../../shared/util/model/card'
 import { CardComponent } from '../../../shared/ui/card/card.component'
 import { Title } from '@angular/platform-browser'
+import { ObjectId } from '../../../shared/util/data-method/object-id'
 
 @Component({
   selector: 'app-species-list',
@@ -36,6 +37,7 @@ export class SpeciesListComponent implements OnInit {
     private readonly speciesService: SpeciesService,
     private readonly route: ActivatedRoute,
     private readonly router: Router,
+    private readonly objectUtil: ObjectId,
     private title: Title
   ) {
     this.title.setTitle(`Species - Star Wars wiki`);
@@ -56,6 +58,7 @@ export class SpeciesListComponent implements OnInit {
       this.speciesSub = this.speciesService.getSpecies(this.pageControl).subscribe((resp: SpeciesResponse) => {
         this.cards = resp.results.map((e) => {
           return {
+            id: this.objectUtil.getId(e.url),
             name: e.name,
             type: 'species'
           }

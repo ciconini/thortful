@@ -14,16 +14,12 @@ import { ImgFallbackDirective } from '../../util/directives/imageFallback'
 })
 export class CardComponent {
   @Input() cardData!: Card;
-  @Input() index!: number;
+  @Input() id!: string;
   @Input() page!: number;
 
   constructor(
     private readonly util: ObjectId,
     public readonly url: UrlUtil
   ) {}
-
-  getId(index: number): number {
-    return this.util.getId(index, this.page)
-  }
 
 }

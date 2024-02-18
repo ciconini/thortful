@@ -11,6 +11,7 @@ import { PaginationComponent } from '../../../shared/ui/pagination/pagination.co
 import { CardComponent } from '../../../shared/ui/card/card.component'
 import { Card } from '../../../shared/util/model/card'
 import { Title } from '@angular/platform-browser'
+import { ObjectId } from '../../../shared/util/data-method/object-id'
 
 @Component({
   selector: 'app-starships-list',
@@ -36,6 +37,7 @@ export class StarshipsListComponent implements OnInit {
     private readonly starshipsService: StarshipsService,
     private readonly route: ActivatedRoute,
     private readonly router: Router,
+    private readonly objectUtil: ObjectId,
     private title: Title
   ) {
     this.title.setTitle(`Starships - Star Wars wiki`);
@@ -56,6 +58,7 @@ export class StarshipsListComponent implements OnInit {
       this.starshipSub = this.starshipsService.getStarships(this.pageControl).subscribe((resp: StarshipResponse) => {
         this.cards = resp.results.map((e) => {
           return {
+            id: this.objectUtil.getId(e.url),
             name: e.name,
             type: 'starships'
           }

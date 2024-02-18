@@ -11,6 +11,7 @@ import { PaginationComponent } from '../../../shared/ui/pagination/pagination.co
 import { CardComponent } from '../../../shared/ui/card/card.component'
 import { Card } from '../../../shared/util/model/card'
 import { Title } from '@angular/platform-browser'
+import { ObjectId } from '../../../shared/util/data-method/object-id'
 
 @Component({
   selector: 'app-planet-list',
@@ -36,6 +37,7 @@ export class FilmListComponent implements OnInit, OnDestroy {
     private readonly planetService: FilmService,
     private readonly route: ActivatedRoute,
     private readonly router: Router,
+    private readonly objectUtil: ObjectId,
     private title: Title
   ) {
     this.title.setTitle(`Films - ${this.title.getTitle()}`);
@@ -56,6 +58,7 @@ export class FilmListComponent implements OnInit, OnDestroy {
       this.filmSub = this.planetService.getFilms(this.pageControl).subscribe((resp: FilmResponse) => {
         this.cards = resp.results.map((e) => {
           return {
+            id: this.objectUtil.getId(e.url),
             name: e.title,
             type: 'films'
           }

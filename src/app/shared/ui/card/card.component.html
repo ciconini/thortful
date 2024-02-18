@@ -1,5 +1,5 @@
 @if (cardData) {
-    <a class="card-item card-{{cardData.type}}" [routerLink]="['/'+cardData.type, getId(index)]">
+    <a class="card-item card-{{cardData.type}}" [routerLink]="['/'+cardData.type, id]">
         <div class="image">
             @if (cardData.name) {
                 <img 

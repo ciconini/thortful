@@ -11,6 +11,7 @@ import { PaginationComponent } from '../../../shared/ui/pagination/pagination.co
 import { Card } from '../../../shared/util/model/card'
 import { CardComponent } from '../../../shared/ui/card/card.component'
 import { Title } from '@angular/platform-browser'
+import { ObjectId } from '../../../shared/util/data-method/object-id'
 
 @Component({
   selector: 'app-character-list',
@@ -35,6 +36,7 @@ export class CharacterListComponent implements OnInit, OnDestroy {
   constructor(
     private readonly characterService: CharacterService,
     private readonly route: ActivatedRoute,
+    private readonly objectUtil: ObjectId,
     private readonly router: Router,
     private title: Title
   ) {
@@ -56,6 +58,7 @@ export class CharacterListComponent implements OnInit, OnDestroy {
       this.characterSub = this.characterService.getCharacters(this.pageControl).subscribe((resp: CharacterResponse) => {
         this.cards = resp.results.map((e) => {
           return {
+            id: this.objectUtil.getId(e.url),
             name: e.name,
             type: 'characters'
           }

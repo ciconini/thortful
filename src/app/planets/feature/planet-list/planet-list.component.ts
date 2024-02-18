@@ -11,6 +11,7 @@ import { PaginationComponent } from '../../../shared/ui/pagination/pagination.co
 import { CardComponent } from '../../../shared/ui/card/card.component'
 import { Card } from '../../../shared/util/model/card'
 import { Title } from '@angular/platform-browser'
+import { ObjectId } from '../../../shared/util/data-method/object-id'
 
 @Component({
   selector: 'app-planet-list',
@@ -36,6 +37,7 @@ export class PlanetListComponent implements OnInit, OnDestroy {
     private readonly planetService: PlanetService,
     private readonly route: ActivatedRoute,
     private readonly router: Router,
+    private readonly objectUtil: ObjectId,
     private title: Title
   ) {
     this.title.setTitle(`Planets - ${this.title.getTitle()}`);
@@ -65,6 +67,7 @@ export class PlanetListComponent implements OnInit, OnDestroy {
   private getCards(planets: Planet[]): void {
     this.cards = planets.map((e) => {
       return {
+        id: this.objectUtil.getId(e.url),
         name: e.name,
         type: 'planets'
       }

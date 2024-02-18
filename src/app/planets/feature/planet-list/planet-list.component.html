@@ -7,7 +7,7 @@
     @if (planets && !loading) {
         <div class="list planet-list">
             @for (card of cards; track $index) {
-                <app-card [cardData]="card" [page]="pageControl.page" [index]="$index"></app-card>
+                <app-card [cardData]="card" [page]="pageControl.page" [id]="card.id"></app-card>
             } @empty {
                 no entries found
             }

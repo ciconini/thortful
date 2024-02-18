@@ -11,6 +11,7 @@ import { PaginationComponent } from '../../../shared/ui/pagination/pagination.co
 import { Card } from '../../../shared/util/model/card'
 import { CardComponent } from '../../../shared/ui/card/card.component'
 import { Title } from '@angular/platform-browser'
+import { ObjectId } from '../../../shared/util/data-method/object-id'
 
 @Component({
   selector: 'app-vehicles-list',
@@ -36,6 +37,7 @@ export class VehiclesListComponent implements OnInit {
     private readonly vehicleService: VehiclesService,
     private readonly route: ActivatedRoute,
     private readonly router: Router,
+    private readonly objectUtil: ObjectId,
     private title: Title
   ) {
     this.title.setTitle(`Vehicles - Star Wars wiki`);
@@ -56,8 +58,9 @@ export class VehiclesListComponent implements OnInit {
       this.vehicleSub = this.vehicleService.getVehicles(this.pageControl).subscribe((resp: VehicleResponse) => {
         this.cards = resp.results.map((e) => {
           return {
+            id: this.objectUtil.getId(e.url),
             name: e.name,
-            type: 'vehicles'
+            type: 'vehicles',
           }
         });
         this.pageControl.count = resp.count;

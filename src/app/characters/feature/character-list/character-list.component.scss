@@ -2,7 +2,6 @@
 @import 'mixins';
 
 .container {
-    padding-bottom: 50px;
     position: relative;
     .people-list {
         @include d-grid(120px);

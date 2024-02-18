@@ -1,11 +1,11 @@
-export interface PeopleResponse {
+export interface CharacterResponse {
     count: number
     next?: string
     previous?: string
-    results: Person[]
+    results: Character[]
   }
   
-  export interface Person {
+  export interface Character {
     name: string;
     birth_year: number;
     eye_color: string;

@@ -10,6 +10,7 @@ import { LoadingComponent } from '../../../shared/ui/loading/loading.component'
 import { PaginationComponent } from '../../../shared/ui/pagination/pagination.component'
 import { CardComponent } from '../../../shared/ui/card/card.component'
 import { Card } from '../../../shared/util/model/card'
+import { Title } from '@angular/platform-browser'
 
 @Component({
   selector: 'app-planet-list',
@@ -34,8 +35,10 @@ export class PlanetListComponent implements OnInit, OnDestroy {
   constructor(
     private readonly planetService: PlanetService,
     private readonly route: ActivatedRoute,
-    private readonly router: Router
+    private readonly router: Router,
+    private title: Title
   ) {
+    this.title.setTitle(`Planets - ${this.title.getTitle()}`);
   }
   
   ngOnInit(): void {

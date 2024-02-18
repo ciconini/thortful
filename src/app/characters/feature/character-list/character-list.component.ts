@@ -1,18 +1,19 @@
 import { CommonModule } from '@angular/common'
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs'
-import { PeopleService } from '../../data-access/people.service'
+import { CharacterService } from '../../data-access/character.service'
 import { PageControl } from '../../../shared/util/model/page-control'
 import { ActivatedRoute, Params, Router } from '@angular/router'
-import { PeopleResponse, Person } from '../../util/model/people'
+import { CharacterResponse, Character } from '../../util/model/character'
 import { PageTitleComponent } from '../../../shared/ui/page-title/page-title.component'
 import { LoadingComponent } from '../../../shared/ui/loading/loading.component'
 import { PaginationComponent } from '../../../shared/ui/pagination/pagination.component'
 import { Card } from '../../../shared/util/model/card'
 import { CardComponent } from '../../../shared/ui/card/card.component'
+import { Title } from '@angular/platform-browser'
 
 @Component({
-  selector: 'app-people-list',
+  selector: 'app-character-list',
   standalone: true,
   imports: [
     CommonModule, 
@@ -21,21 +22,23 @@ import { CardComponent } from '../../../shared/ui/card/card.component'
     LoadingComponent, 
     PaginationComponent
   ],
-  templateUrl: './people-list.component.html',
-  styleUrl: './people-list.component.scss'
+  templateUrl: './character-list.component.html',
+  styleUrl: './character-list.component.scss'
 })
-export class PeopleListComponent implements OnInit, OnDestroy {
-  people: Person[] = [];
+export class CharacterListComponent implements OnInit, OnDestroy {
+  character: Character[] = [];
   pageControl: PageControl = new PageControl;
-  peopleSub: Subscription = new Subscription;
+  characterSub: Subscription = new Subscription;
   loading: boolean = true;
   cards: Card[] = [];
   
   constructor(
-    private readonly peopleService: PeopleService,
+    private readonly characterService: CharacterService,
     private readonly route: ActivatedRoute,
-    private readonly router: Router
+    private readonly router: Router,
+    private title: Title
   ) {
+    this.title.setTitle(`Characters - ${this.title.getTitle()}`);
   }
   
   ngOnInit(): void {
@@ -50,11 +53,11 @@ export class PeopleListComponent implements OnInit, OnDestroy {
           }
         })
       }
-      this.peopleSub = this.peopleService.getPeople(this.pageControl).subscribe((resp: PeopleResponse) => {
+      this.characterSub = this.characterService.getCharacters(this.pageControl).subscribe((resp: CharacterResponse) => {
         this.cards = resp.results.map((e) => {
           return {
             name: e.name,
-            type: 'people'
+            type: 'characters'
           }
         });
         this.pageControl.count = resp.count;
@@ -64,10 +67,10 @@ export class PeopleListComponent implements OnInit, OnDestroy {
   }
 
   goToPage(event:any): void {
-    this.router.navigate(["/people"],{queryParams: {page: event}})
+    this.router.navigate(["/characters"],{queryParams: {page: event}})
   }
 
   ngOnDestroy(): void {
-    this.peopleSub.unsubscribe();
+    this.characterSub.unsubscribe();
   }
 }

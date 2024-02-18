@@ -52,6 +52,7 @@ section#content {
                 img {
                     width: 100%;
                     box-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+                    border-radius: 300px;
                 }
                 @include responsive(max-sm) {
                     position: absolute;

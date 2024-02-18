@@ -1,22 +1,22 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PersonDetailComponent } from './person-detail.component';
+import { CharacterListComponent } from './character-list.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing'
 import { ActivatedRouteStub } from '../../../shared/util/model/activatedroute-mock'
 import { ActivatedRoute } from '@angular/router'
 
-describe('PersonDetailComponent', () => {
-  let component: PersonDetailComponent;
-  let fixture: ComponentFixture<PersonDetailComponent>;
+describe('CharacterListComponent', () => {
+  let component: CharacterListComponent;
+  let fixture: ComponentFixture<CharacterListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PersonDetailComponent, HttpClientTestingModule],
+      imports: [CharacterListComponent, HttpClientTestingModule],
       providers: [{provide: ActivatedRoute, useClass: ActivatedRouteStub}]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(PersonDetailComponent);
+    fixture = TestBed.createComponent(CharacterListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

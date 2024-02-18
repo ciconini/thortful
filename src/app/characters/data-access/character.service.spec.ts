@@ -1,14 +1,14 @@
 import { TestBed } from '@angular/core/testing';
 
-import { PeopleService } from './people.service';
+import { CharacterService } from './character.service';
 import { environment } from '../../../environments/environment.development'
-import { PeopleResponse, Person } from '../util/model/people'
+import { CharacterResponse, Character } from '../util/model/character'
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing'
 import { PEOPLE } from './people-mock'
 import { PageControl } from '../../shared/util/model/page-control'
 
-describe('PeopleService', () => {
-  let service: PeopleService,
+describe('CharacterService', () => {
+  let service: CharacterService,
     httpTestingController: HttpTestingController,
     people = PEOPLE,
     pageControl = new PageControl();
@@ -16,10 +16,10 @@ describe('PeopleService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [ HttpClientTestingModule ],
-      providers: [ PeopleService ]
+      providers: [ CharacterService ]
     });
     httpTestingController = TestBed.inject(HttpTestingController);
-    service = TestBed.inject(PeopleService);
+    service = TestBed.inject(CharacterService);
   });
 
   it('should be created', () => {
@@ -27,7 +27,7 @@ describe('PeopleService', () => {
   });
 
   it('should get people list', () => {
-    service.getPeople(pageControl).subscribe((people: PeopleResponse) => {
+    service.getCharacters(pageControl).subscribe((people: CharacterResponse) => {
       expect(people).withContext("get people list").toBeTruthy();
       expect(people.count).withContext("count greater than 0").toBeGreaterThan(0);
       expect(people.results.length).withContext("person quantity greater than 0").toBeGreaterThan(0);
@@ -41,7 +41,7 @@ describe('PeopleService', () => {
   });
 
   it('should get single person data', () => {
-    service.getPerson('1').subscribe((person: Person) => {
+    service.getCharacter('1').subscribe((person: Character) => {
       expect(person).withContext("get person data").toBeTruthy();
       expect(person.name).withContext("get correct person data").toEqual("Luke Skywalker");
     });

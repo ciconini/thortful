@@ -1,5 +1,5 @@
-@defer (on viewport; on timer(5s)) {
-    @if (species$ | async; as species){
+
+@if (!loading && !error){
         <section id="banner" [ngStyle]="{'background-image': bgImg(species)}">
             <div class="overflow"></div>
             <div class="background">
@@ -37,9 +37,10 @@
                 </div>
             </section>
         </article>
-    } @else {
-        <app-not-found [item]="'Species'"></app-not-found>
-    }
-} @placeholder {
-    <div>loading...</div>
+}
+@if(error) {
+    <app-not-found item="Species"></app-not-found>
+}
+@if(loading) {
+    <app-loading></app-loading>
 }

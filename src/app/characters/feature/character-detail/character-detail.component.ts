@@ -2,36 +2,34 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, RouterModule } from '@angular/router'
 import { Observable, Subscription } from 'rxjs'
 import { CommonModule } from '@angular/common'
-import { FilmService } from '../../data-access/film.service'
-import { Film } from '../../util/model/film'
-import { Episode } from '../../../shared/util/data-method/episode'
+import { CharacterService } from '../../data-access/character.service'
+import { Character } from '../../util/model/character'
 import { UrlUtil } from '../../../shared/util/data-method/url'
-import { LoadingComponent } from '../../../shared/ui/loading/loading.component'
 import { NotFoundComponent } from '../../../shared/ui/not-found/not-found.component'
 import { Title } from '@angular/platform-browser'
+import { LoadingComponent } from '../../../shared/ui/loading/loading.component'
 
 @Component({
-  selector: 'app-film-detail',
+  selector: 'app-character-detail',
   standalone: true,
   imports: [
     CommonModule, 
-    LoadingComponent, 
     RouterModule, 
+    LoadingComponent, 
     NotFoundComponent
   ],
-  templateUrl: './film-detail.component.html',
-  styleUrl: './film-detail.component.scss'
+  templateUrl: './character-detail.component.html',
+  styleUrl: './character-detail.component.scss'
 })
-export class FilmDetailComponent implements OnInit, OnDestroy {
-  film: Film = {} as Film;
+export class CharacterDetailComponent implements OnInit, OnDestroy {
+  character: Character = {} as Character;
   sub: Subscription = new Subscription;
   loading: boolean = true;
   error: boolean = false;
 
   constructor(
-    private readonly filmService: FilmService,
+    private readonly peopleService: CharacterService,
     private readonly route: ActivatedRoute,
-    public readonly episode: Episode,
     public readonly url: UrlUtil,
     private title: Title
   ) { }
@@ -39,25 +37,24 @@ export class FilmDetailComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
       if(params['id']){
-        this.sub = this.filmService.getFilm(params['id']).subscribe((resp: Film) => {
-          this.film = resp;
-          this.title.setTitle(`${resp.title} - Films - Star Wars wiki`);
+        this.sub = this.peopleService.getCharacter(params['id']).subscribe((resp: Character) => {
+          this.character = resp;
+          this.title.setTitle(`${resp.name} - Characters - Star Wars wiki`);
           this.loading = false;
         },
         error => {
           this.error = true;
           this.loading = false;
-        });
+        })
       }
     })
   }
 
-  bgImg(film: Film): string {
-    return `url(${this.url.normalizeUrl(film.title, 'films')})`
+  bgImg(character: Character): string {
+    return `url(${this.url.normalizeUrl(character.name, 'characters')})`
   }
 
   ngOnDestroy(): void {
     this.sub.unsubscribe();
   }
-
 }

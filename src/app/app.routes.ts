@@ -5,7 +5,7 @@ import { filmRoutes } from './films/shell/film.routes'
 import { starshipRoutes } from './starships/starship-shell/starship.routes'
 import { vehicleRoutes } from './vehicles/shell/vehicle.routes'
 import { speciesRoutes } from './species/species-shell/species.routes'
-import { peopleRoutes } from './people/shell/people.routes'
+import { characterRoutes } from './characters/shell/character.routes'
 import { homepageRoutes } from './homepage/shell/homepage.routes'
 
 export const routes: Routes = [
@@ -27,7 +27,7 @@ export const routes: Routes = [
     {
         path: "characters",
         component: LayoutComponent,
-        children: peopleRoutes
+        children: characterRoutes
     },
     {
         path: "starships",

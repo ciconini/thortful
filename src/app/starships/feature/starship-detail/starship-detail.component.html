@@ -1,45 +1,45 @@
-@defer (on viewport; on timer(5s)) {
-    @if (starship$ | async; as starship){
-        <section id="banner" [ngStyle]="{'background-image': bgImg(starship)}">
-            <div class="overflow"></div>
-            <div class="background">
-                <img src="" alt="{{starship.name}}">
-            </div>
-            <div class="back" [routerLink]="['/starships']">
-                <i class="fa-solid fa-angle-left"></i> Back to Starships
-            </div>
-        </section>
-        <article>
-            <section id="content">
-                <div class="container">
-                    <div class="page-header">
-                        <div class="starship-info">
-                            <h1 class="starship-title">
-                                {{starship.name}}
-                            </h1>
-                            <div class="starship-data">
-                                <ul class="data-list">
-                                    <li class="item"><span>Class:</span> {{starship.starship_class}}</li>
-                                    <li class="item"><span>Model:</span> {{starship.model}}</li>
-                                    <li class="item"><span>Manufacturer:</span> {{starship.manufacturer}}</li>
-                                    <li class="item"><span>Cost:</span> {{starship.cost_in_credits + ' cr'}}</li>
-                                    <li class="item"><span>Length:</span> {{starship.length + ' m'}}</li>
-                                    <li class="item"><span>Crew:</span> {{starship.crew}}</li>
-                                    <li class="item"><span>Passengers:</span> {{starship.passengers}}</li>
-                                    <li class="item"><span>Cargo Capacity:</span> {{starship.cargo_capacity + ' kg'}}</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="starship-image">
-                            <img [src]="url.normalizeUrl(starship.name, 'starships')" appImgFallback="assets/images/placeholder.webp" alt="{{starship.name}}">
+@if (!loading && !error){
+    <section id="banner" [ngStyle]="{'background-image': bgImg(starship)}">
+        <div class="overflow"></div>
+        <div class="background">
+            <img src="" alt="{{starship.name}}">
+        </div>
+        <div class="back" [routerLink]="['/starships']">
+            <i class="fa-solid fa-angle-left"></i> Back to Starships
+        </div>
+    </section>
+    <article>
+        <section id="content">
+            <div class="container">
+                <div class="page-header">
+                    <div class="starship-info">
+                        <h1 class="starship-title">
+                            {{starship.name}}
+                        </h1>
+                        <div class="starship-data">
+                            <ul class="data-list">
+                                <li class="item"><span>Class:</span> {{starship.starship_class}}</li>
+                                <li class="item"><span>Model:</span> {{starship.model}}</li>
+                                <li class="item"><span>Manufacturer:</span> {{starship.manufacturer}}</li>
+                                <li class="item"><span>Cost:</span> {{starship.cost_in_credits + ' cr'}}</li>
+                                <li class="item"><span>Length:</span> {{starship.length + ' m'}}</li>
+                                <li class="item"><span>Crew:</span> {{starship.crew}}</li>
+                                <li class="item"><span>Passengers:</span> {{starship.passengers}}</li>
+                                <li class="item"><span>Cargo Capacity:</span> {{starship.cargo_capacity + ' kg'}}</li>
+                            </ul>
                         </div>
                     </div>
+                    <div class="starship-image">
+                        <img [src]="url.normalizeUrl(starship.name, 'starships')" appImgFallback="assets/images/placeholder.webp" alt="{{starship.name}}">
+                    </div>
                 </div>
-            </section>
-        </article>
-    } @else {
-        <app-not-found [item]="'Starship'"></app-not-found>
-    }
-} @placeholder {
-    <div>loading...</div>
+            </div>
+        </section>
+    </article>
+}
+@if(error) {
+    <app-not-found item="Starships"></app-not-found>
+}
+@if(loading) {
+    <app-loading></app-loading>
 }

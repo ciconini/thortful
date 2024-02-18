@@ -10,6 +10,7 @@ import { LoadingComponent } from '../../../shared/ui/loading/loading.component'
 import { PaginationComponent } from '../../../shared/ui/pagination/pagination.component'
 import { Card } from '../../../shared/util/model/card'
 import { CardComponent } from '../../../shared/ui/card/card.component'
+import { Title } from '@angular/platform-browser'
 
 @Component({
   selector: 'app-species-list',
@@ -34,8 +35,10 @@ export class SpeciesListComponent implements OnInit {
   constructor(
     private readonly speciesService: SpeciesService,
     private readonly route: ActivatedRoute,
-    private readonly router: Router
+    private readonly router: Router,
+    private title: Title
   ) {
+    this.title.setTitle(`Species - Star Wars wiki`);
   }
   
   ngOnInit(): void {

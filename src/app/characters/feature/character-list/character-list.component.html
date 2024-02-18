@@ -2,7 +2,7 @@
     Characters
 </app-page-title>
 <div class="container">
-    @if (people && !loading) {
+    @if (cards && !loading) {
         <div class="list people-list">
             @for (card of cards; track $index) {
                 <app-card [cardData]="card" [page]="pageControl.page" [index]="$index"></app-card>

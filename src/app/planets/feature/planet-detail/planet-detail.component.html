@@ -1,45 +1,46 @@
-@defer (on viewport; on timer(5s)) {
-    @if (planet$ | async; as planet){
-        <section id="banner" [ngStyle]="{'background-image': bgImg(planet)}">
-            <div class="overflow"></div>
-            <div class="background">
-                <img src="" alt="{{planet.name}}">
-            </div>
-            <div class="back" [routerLink]="['/planets']">
-                <i class="fa-solid fa-angle-left"></i> Back to Planets
-            </div>
-        </section>
-        <article>
-            <section id="content">
-                <div class="container">
-                    <div class="page-header">
-                        <div class="planet-info">
-                            <h1 class="planet-title">
-                                {{planet.name}}
-                            </h1>
-                            <div class="planet-data">
-                                <ul class="data-list">
-                                    <li class="item"><span>Population:</span> {{planet.population}}</li>
-                                    <li class="item"><span>Climate:</span> {{planet.climate}}</li>
-                                    <li class="item"><span>Diameter:</span> {{planet.diameter + ' km'}}</li>
-                                    <li class="item"><span>Gravity:</span> {{planet.gravity}}</li>
-                                    <li class="item"><span>Orbital Period:</span> {{planet.orbital_period + 'days'}}</li>
-                                    <li class="item"><span>Rotation Period:</span> {{planet.rotation_period + 'hours'}}</li>
-                                    <li class="item"><span>Surface Water:</span> {{planet.surface_water}}</li>
-                                    <li class="item"><span>Terrain:</span> {{planet.terrain}}</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="planet-image">
-                            <img [src]="url.normalizeUrl(planet.name, 'planets')" appImgFallback="assets/images/placeholder.webp" alt="{{planet.name}}">
+
+@if (!loading && !error){
+    <section id="banner" [ngStyle]="{'background-image': bgImg(planet)}">
+        <div class="overflow"></div>
+        <div class="background">
+            <img src="" alt="{{planet.name}}">
+        </div>
+        <div class="back" [routerLink]="['/planets']">
+            <i class="fa-solid fa-angle-left"></i> Back to Planets
+        </div>
+    </section>
+    <article>
+        <section id="content">
+            <div class="container">
+                <div class="page-header">
+                    <div class="planet-info">
+                        <h1 class="planet-title">
+                            {{planet.name}}
+                        </h1>
+                        <div class="planet-data">
+                            <ul class="data-list">
+                                <li class="item"><span>Population:</span> {{planet.population}}</li>
+                                <li class="item"><span>Climate:</span> {{planet.climate}}</li>
+                                <li class="item"><span>Diameter:</span> {{planet.diameter + ' km'}}</li>
+                                <li class="item"><span>Gravity:</span> {{planet.gravity}}</li>
+                                <li class="item"><span>Orbital Period:</span> {{planet.orbital_period + 'days'}}</li>
+                                <li class="item"><span>Rotation Period:</span> {{planet.rotation_period + 'hours'}}</li>
+                                <li class="item"><span>Surface Water:</span> {{planet.surface_water}}</li>
+                                <li class="item"><span>Terrain:</span> {{planet.terrain}}</li>
+                            </ul>
                         </div>
                     </div>
+                    <div class="planet-image">
+                        <img [src]="url.normalizeUrl(planet.name, 'planets')" appImgFallback="assets/images/placeholder.webp" alt="{{planet.name}}">
+                    </div>
                 </div>
-            </section>
-        </article>
-    } @else {
-        <app-not-found [item]="'Planet'"></app-not-found>
-    }
-} @placeholder {
-    <div>loading...</div>
+            </div>
+        </section>
+    </article>
+}
+@if(error) {
+    <app-not-found [item]="'Planet'"></app-not-found>
+}
+@if(loading) {
+    <app-loading></app-loading>
 }

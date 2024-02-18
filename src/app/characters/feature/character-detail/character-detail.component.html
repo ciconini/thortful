@@ -1,0 +1,51 @@
+
+@if (!loading && !error){
+    <section id="banner" [ngStyle]="{'background-image': bgImg(character)}">
+        <div class="overflow"></div>
+        <div class="background">
+            <img src="" alt="{{character.name}}">
+        </div>
+        <div class="back" [routerLink]="['/characters']">
+            <i class="fa-solid fa-angle-left"></i> Back to Characters
+        </div>
+    </section>
+    <article>
+        <section id="content">
+            <div class="container">
+                <div class="page-header">
+                    <div class="character-info">
+                        <h1 class="character-name">
+                            {{character.name}}
+                        </h1>
+                        <div class="character-data">
+                            <ul class="data-list">
+                                <li class="item"><span>Gender: </span> 
+                                    <i title="{{character.gender}}" class="fa-solid" 
+                                        [ngClass]="{
+                                            'fa-mars': character.gender === 'male',
+                                            'fa-venus': character.gender === 'female'
+                                            }"></i>
+                                </li>
+                                <li class="item"><span>Birth:</span> {{character.birth_year}}</li>
+                                <li class="item"><span>Weight:</span> {{character.mass + ' kg'}}</li>
+                                <li class="item"><span>Height:</span> {{character.height + ' cm'}}</li>
+                                <li class="item"><span>Eye Color:</span> {{character.eye_color}}</li>
+                                <li class="item"><span>Skin Color:</span> {{character.skin_color}}</li>
+                                <li class="item"><span>Hair Color:</span> {{character.hair_color}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="character-image">
+                        <img [src]="url.normalizeUrl(character.name, 'characters')" appImgFallback="assets/images/placeholder.webp" alt="{{character.name}}">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </article>
+}
+@if(error) {
+    <app-not-found [item]="'Character'"></app-not-found>
+}
+@if(loading) {
+    <app-loading></app-loading>
+}

@@ -1,58 +1,61 @@
 @import 'variables';
 @import 'animations';
-.circle {
-    margin-top: 60px;
-    background-color: $primary;
-    width: 150px;
-    height: 150px;
-    border-radius: 75px;
-    overflow: hidden;
-    position: relative;
-    top: calc(50% - 75px);
-    left: calc(50% - 75px);
-    animation: hover 1s linear infinite;
-    .shadow {
-        background-color: darken($primary, 20%);
+.loading {
+    padding: 100px 0 100px;
+    .circle {
+        margin-top: 60px;
+        background-color: $primary;
         width: 150px;
         height: 150px;
         border-radius: 75px;
-        transform: translate(26px, 10px);
+        overflow: hidden;
+        position: relative;
+        margin: 0 auto 18px;
+        animation: hover 1s linear infinite;
+        .shadow {
+            background-color: darken($primary, 20%);
+            width: 150px;
+            height: 150px;
+            border-radius: 75px;
+            transform: translate(26px, 10px);
+        }
+        .cannon {
+            width: 50px;
+            height: 55px;
+            background-color: $primary;
+            position: absolute;
+            top: 12px;
+            left: 20px;
+            border-radius: 100%;
+            transform: rotate(45deg);
+        }
+        .cannon-shadow {
+            width: 18px;
+            height: 35px;
+            background-color: darken($primary, 20%);
+            position: absolute;
+            top: 20px;
+            left: 33px;
+            border-radius: 100%;
+            transform: rotate(34deg);
+        }
+        .line {
+            width: 100%;
+            height: 2px;
+            background-color: darken($primary, 30%);
+            position: absolute;
+            top: 50%;
+            left: 0;
+        }
     }
-    .cannon {
-        width: 50px;
-        height: 55px;
-        background-color: $primary;
-        position: absolute;
-        top: 12px;
-        left: 20px;
-        border-radius: 100%;
-        transform: rotate(45deg);
+    
+    .text {
+        color: $primary;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-align: center;
+        // position: absolute;
+        // top: calc(50% + 100px);
+        // left: calc(50% - (85px/2));
     }
-    .cannon-shadow {
-        width: 18px;
-        height: 35px;
-        background-color: darken($primary, 20%);
-        position: absolute;
-        top: 20px;
-        left: 33px;
-        border-radius: 100%;
-        transform: rotate(34deg);
-    }
-    .line {
-        width: 100%;
-        height: 2px;
-        background-color: darken($primary, 30%);
-        position: absolute;
-        top: 50%;
-        left: 0;
-    }
-}
-
-.text {
-    color: $primary;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    position: absolute;
-    top: calc(50% + 100px);
-    left: calc(50% - (85px/2));
 }

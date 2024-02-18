@@ -47,7 +47,7 @@ section#content {
             display: flex;
             flex-direction: row-reverse;
             position: relative;
-            .film-image {
+            .character-image {
                 width: 40%;
                 img {
                     width: 100%;
@@ -59,10 +59,10 @@ section#content {
                     top: 0;
                 }
             }
-            .film-info {
+            .character-info {
                 width: 60%;
                 padding-left: 50px;
-                .film-title {
+                .character-title {
                     color: $white;
                     font-weight: 300;
                     font-size: 52px;
@@ -86,7 +86,7 @@ section#content {
                         padding-right: 16px;
                     }
                 }
-                .film-data {
+                .character-data {
                     margin-top: 32px;
                     .data-list {
                         list-style-type: none;

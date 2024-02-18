@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, RouterModule } from '@angular/router'
 import { Observable, Subscription } from 'rxjs'
 import { CommonModule } from '@angular/common'
@@ -8,15 +8,16 @@ import { UrlUtil } from '../../../shared/util/data-method/url'
 import { NotFoundComponent } from '../../../shared/ui/not-found/not-found.component'
 import { Title } from '@angular/platform-browser'
 import { LoadingComponent } from '../../../shared/ui/loading/loading.component'
+import { ImgFallbackDirective } from '../../../shared/util/directives/imageFallback'
 
 @Component({
   selector: 'app-vehicle-detail',
   standalone: true,
-  imports: [CommonModule, RouterModule, NotFoundComponent, LoadingComponent],
+  imports: [CommonModule, RouterModule, NotFoundComponent, LoadingComponent, ImgFallbackDirective],
   templateUrl: './vehicle-detail.component.html',
   styleUrl: './vehicle-detail.component.scss'
 })
-export class VehicleDetailComponent implements OnInit {
+export class VehicleDetailComponent implements OnInit, OnDestroy {
   vehicle: Vehicle = {} as Vehicle;
   sub: Subscription = new Subscription;
   loading: boolean = true;
@@ -47,5 +48,9 @@ export class VehicleDetailComponent implements OnInit {
 
   bgImg(vehicle: Vehicle): string {
     return `url(${this.url.normalizeUrl(vehicle.name.toLowerCase(), 'vehicles')})`
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
 }

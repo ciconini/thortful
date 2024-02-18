@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Planet } from '../../util/model/planet'
 import { PlanetService } from '../../data-access/planet.service'
 import { ActivatedRoute, Params, RouterModule } from '@angular/router'
@@ -16,7 +16,7 @@ import { LoadingComponent } from '../../../shared/ui/loading/loading.component'
   templateUrl: './planet-detail.component.html',
   styleUrl: './planet-detail.component.scss'
 })
-export class PlanetDetailComponent implements OnInit {
+export class PlanetDetailComponent implements OnInit, OnDestroy {
   planet: Planet = {} as Planet;
   sub: Subscription = new Subscription;
   loading: boolean = true;
@@ -47,5 +47,9 @@ export class PlanetDetailComponent implements OnInit {
 
   bgImg(planet: Planet): string {
     return `url(${this.url.normalizeUrl(planet.name.toLowerCase(), 'planets')})`
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
 }

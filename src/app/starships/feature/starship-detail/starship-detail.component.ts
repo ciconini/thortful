@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, RouterModule } from '@angular/router'
 import { Observable, Subscription } from 'rxjs'
 import { CommonModule } from '@angular/common'
@@ -16,7 +16,7 @@ import { Title } from '@angular/platform-browser'
   templateUrl: './starship-detail.component.html',
   styleUrl: './starship-detail.component.scss'
 })
-export class StarshipDetailComponent implements OnInit {
+export class StarshipDetailComponent implements OnInit, OnDestroy {
   starship: Starship = {} as Starship;
   sub: Subscription = new Subscription;
   loading: boolean = true;
@@ -47,5 +47,9 @@ export class StarshipDetailComponent implements OnInit {
 
   bgImg(starship: Starship): string {
     return `url(${this.url.normalizeUrl(starship.name.toLowerCase(), 'starships')})`
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
 }

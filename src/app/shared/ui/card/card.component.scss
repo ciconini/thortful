@@ -1,0 +1,113 @@
+@import 'variables';
+@import 'mixins';
+
+.card-item {
+    text-decoration: none;
+    .image {
+        margin: 0 auto;
+        padding: 10px;
+        outline: 3px solid darken($primary, 20%);
+        transition: all .2s;
+        img {
+            object-fit: cover;
+            width: 100%;
+        }
+    }
+    .name {
+        text-align: center;
+        transition: all .2s;
+        padding-top: .5rem;
+        color: darken($white, 20%);
+        letter-spacing: 1px;
+    }
+    &:hover {
+        .image {
+            filter: brightness(1.5);
+            transition: all .2s;
+        }
+        .name {
+            transition: all .2s;
+            color: $white;
+        }
+    }
+
+    &.card-films {
+        .image {
+            border-radius: 2px;
+            img {
+                width: 100%;
+            }
+        }
+    }
+
+    &.card-people {
+        .image {
+            border-radius: 40px;
+            border-top-left-radius: 3px;
+            border-bottom-right-radius: 3px;
+            width: 120px;
+            height: 120px;
+            img {
+                width: 100px;
+                height: 100px;
+                border-radius: 35px;
+                border-top-left-radius: 3px;
+                border-bottom-right-radius: 3px;
+            }
+        }
+    }
+
+    &.card-planets {
+        .image {
+            width: 200px;
+            height: 200px;
+            border-radius: 100px;
+            img {
+                width: 180px;
+                height: 180px;
+                border-radius: 90px;
+            }
+        }
+    }
+
+    &.card-species {
+        .image {
+            width: 200px;
+            height: 240px;
+            img {
+                width: 180px;
+                height: 220px;
+                @include responsive(max-sm) {
+                    width: 100%;
+                    height: auto;
+                }
+            }
+            @include responsive(max-sm) {
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+
+    &.card-starships {
+        .image {
+            width: 280px;
+            height: 240px;
+            img {
+                width: 260px;
+                height: 220px;
+            }
+        }
+    }
+
+    &.card-vehicles {
+        .image {
+            width: 200px;
+            height: 120px;
+            img {
+                width: 180px;
+                height: 100px;
+            }
+        }
+    }
+}

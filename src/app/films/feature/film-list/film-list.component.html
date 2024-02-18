@@ -4,8 +4,8 @@
 <div class="container">
     @if (films && !loading) {
         <div class="list film-list">
-            @for (film of films; track $index) {
-                <app-film-card [film]="film" [page]="pageControl.page" [index]="$index"></app-film-card>
+            @for (card of cards; track $index) {
+                <app-card [cardData]="card" [page]="pageControl.page" [index]="$index"></app-card>
             } @empty {
                 no entries found...
             }

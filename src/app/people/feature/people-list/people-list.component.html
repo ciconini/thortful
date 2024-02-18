@@ -4,8 +4,8 @@
 <div class="container">
     @if (people && !loading) {
         <div class="list people-list">
-            @for (person of people; track $index) {
-                <app-person-card [person]="person" [page]="pageControl.page" [index]="$index"></app-person-card>
+            @for (card of cards; track $index) {
+                <app-card [cardData]="card" [page]="pageControl.page" [index]="$index"></app-card>
             } @empty {
                 no entries found
             }

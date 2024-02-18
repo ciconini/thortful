@@ -2,18 +2,25 @@ import { CommonModule } from '@angular/common'
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs'
 import { PeopleService } from '../../data-access/people.service'
-import { PersonCardComponent } from '../../ui/person-card/person-card.component'
 import { PageControl } from '../../../shared/util/model/page-control'
 import { ActivatedRoute, Params, Router } from '@angular/router'
 import { PeopleResponse, Person } from '../../util/model/people'
 import { PageTitleComponent } from '../../../shared/ui/page-title/page-title.component'
 import { LoadingComponent } from '../../../shared/ui/loading/loading.component'
 import { PaginationComponent } from '../../../shared/ui/pagination/pagination.component'
+import { Card } from '../../../shared/util/model/card'
+import { CardComponent } from '../../../shared/ui/card/card.component'
 
 @Component({
   selector: 'app-people-list',
   standalone: true,
-  imports: [CommonModule, PersonCardComponent, PageTitleComponent, LoadingComponent, PaginationComponent],
+  imports: [
+    CommonModule, 
+    CardComponent, 
+    PageTitleComponent, 
+    LoadingComponent, 
+    PaginationComponent
+  ],
   templateUrl: './people-list.component.html',
   styleUrl: './people-list.component.scss'
 })
@@ -22,7 +29,8 @@ export class PeopleListComponent implements OnInit, OnDestroy {
   pageControl: PageControl = new PageControl;
   peopleSub: Subscription = new Subscription;
   loading: boolean = true;
-
+  cards: Card[] = [];
+  
   constructor(
     private readonly peopleService: PeopleService,
     private readonly route: ActivatedRoute,
@@ -43,7 +51,12 @@ export class PeopleListComponent implements OnInit, OnDestroy {
         })
       }
       this.peopleSub = this.peopleService.getPeople(this.pageControl).subscribe((resp: PeopleResponse) => {
-        this.people = resp.results;
+        this.cards = resp.results.map((e) => {
+          return {
+            name: e.name,
+            type: 'people'
+          }
+        });
         this.pageControl.count = resp.count;
         this.loading = false;
       });

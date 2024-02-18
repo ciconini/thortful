@@ -1,19 +1,26 @@
 import { CommonModule } from '@angular/common'
 import { Component, OnInit } from '@angular/core';
-import { Observable, Subscription } from 'rxjs'
+import { Subscription } from 'rxjs'
 import { VehiclesService } from '../../data-access/vehicles.service'
-import { VehicleCardComponent } from '../../ui/vehicle-card/vehicle-card.component'
 import { PageControl } from '../../../shared/util/model/page-control'
 import { ActivatedRoute, Params, Router } from '@angular/router'
 import { Vehicle, VehicleResponse } from '../../util/model/vehicle'
 import { PageTitleComponent } from '../../../shared/ui/page-title/page-title.component'
 import { LoadingComponent } from '../../../shared/ui/loading/loading.component'
 import { PaginationComponent } from '../../../shared/ui/pagination/pagination.component'
+import { Card } from '../../../shared/util/model/card'
+import { CardComponent } from '../../../shared/ui/card/card.component'
 
 @Component({
   selector: 'app-vehicles-list',
   standalone: true,
-  imports: [CommonModule, VehicleCardComponent, PageTitleComponent, LoadingComponent, PaginationComponent],
+  imports: [
+    CommonModule, 
+    CardComponent, 
+    PageTitleComponent, 
+    LoadingComponent, 
+    PaginationComponent
+  ],
   templateUrl: './vehicles-list.component.html',
   styleUrl: './vehicles-list.component.scss'
 })
@@ -22,6 +29,7 @@ export class VehiclesListComponent implements OnInit {
   vehicleSub: Subscription = new Subscription;
   pageControl: PageControl = new PageControl;
   loading: boolean = true;
+  cards: Card[] = [];
 
   constructor(
     private readonly vehicleService: VehiclesService,
@@ -43,7 +51,12 @@ export class VehiclesListComponent implements OnInit {
         })
       }
       this.vehicleSub = this.vehicleService.getVehicles(this.pageControl).subscribe((resp: VehicleResponse) => {
-        this.vehicles = resp.results;
+        this.cards = resp.results.map((e) => {
+          return {
+            name: e.name,
+            type: 'vehicles'
+          }
+        });
         this.pageControl.count = resp.count;
         this.loading = false;
       });

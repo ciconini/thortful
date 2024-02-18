@@ -5,7 +5,7 @@
     padding-bottom: 50px;
     position: relative;
     .starship-list {
-        @include d-grid(200px);
+        @include d-grid(280px);
         gap: 1.5rem;
         row-gap: 3rem;
         margin-top: -40px;

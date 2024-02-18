@@ -1,1 +1,17 @@
-<p>card works!</p>
+@if (cardData) {
+    <a class="card-item card-{{cardData.type}}" [routerLink]="['/'+cardData.type, getId(index)]">
+        <div class="image">
+            @if (cardData.name) {
+                <img 
+                    [src]="url.normalizeUrl(cardData.name, cardData.type)" 
+                    appImgFallback="assets/images/placeholder.webp" 
+                    alt="{{cardData.name}} Image"/>
+            } @else {
+                <div class="no-image"></div>
+            }
+        </div>
+        <div class="name">
+            {{cardData.name}}
+        </div>
+    </a>
+}

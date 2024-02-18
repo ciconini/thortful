@@ -4,8 +4,8 @@
 <div class="container">
     @if (starships && !loading) {
         <div class="list starship-list">
-            @for (starship of starships; track $index) {
-                <app-starship-card [starship]="starship" [page]="pageControl.page" [index]="$index"></app-starship-card>
+            @for (card of cards; track $index) {
+                <app-card [cardData]="card" [page]="pageControl.page" [index]="$index"></app-card>
             } @empty {
                 no entries found...
             }

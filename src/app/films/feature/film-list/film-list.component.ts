@@ -1,19 +1,26 @@
 import { CommonModule } from '@angular/common'
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Observable, Subscription } from 'rxjs'
+import { Subscription } from 'rxjs'
 import { FilmService } from '../../data-access/film.service'
-import { FilmCardComponent } from '../../ui/film-card/film-card.component'
 import { PageControl } from '../../../shared/util/model/page-control'
 import { ActivatedRoute, Params, Router } from '@angular/router'
 import { Film, FilmResponse } from '../../util/model/film'
 import { PageTitleComponent } from '../../../shared/ui/page-title/page-title.component'
 import { LoadingComponent } from '../../../shared/ui/loading/loading.component'
 import { PaginationComponent } from '../../../shared/ui/pagination/pagination.component'
+import { CardComponent } from '../../../shared/ui/card/card.component'
+import { Card } from '../../../shared/util/model/card'
 
 @Component({
   selector: 'app-planet-list',
   standalone: true,
-  imports: [CommonModule, FilmCardComponent, PageTitleComponent, LoadingComponent, PaginationComponent],
+  imports: [
+    CommonModule, 
+    CardComponent, 
+    PageTitleComponent, 
+    LoadingComponent, 
+    PaginationComponent
+  ],
   templateUrl: './film-list.component.html',
   styleUrl: './film-list.component.scss'
 })
@@ -22,6 +29,7 @@ export class FilmListComponent implements OnInit, OnDestroy {
   filmSub: Subscription = new Subscription;
   pageControl: PageControl = new PageControl;
   loading: boolean = true;
+  cards: Card[] = [];
 
   constructor(
     private readonly planetService: FilmService,
@@ -43,7 +51,12 @@ export class FilmListComponent implements OnInit, OnDestroy {
         })
       }
       this.filmSub = this.planetService.getFilms(this.pageControl).subscribe((resp: FilmResponse) => {
-        this.films = resp.results;
+        this.cards = resp.results.map((e) => {
+          return {
+            name: e.title,
+            type: 'films'
+          }
+        })
         this.pageControl.count = resp.count;
         this.loading = false;
       });

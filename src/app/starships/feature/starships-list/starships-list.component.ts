@@ -1,19 +1,26 @@
 import { CommonModule } from '@angular/common'
 import { Component, OnInit } from '@angular/core';
-import { Observable, Subscription } from 'rxjs'
+import { Subscription } from 'rxjs'
 import { StarshipsService } from '../../data-access/starships.service'
-import { StarshipCardComponent } from '../../ui/starship-card/starship-card.component'
 import { PageControl } from '../../../shared/util/model/page-control'
 import { ActivatedRoute, Params, Router } from '@angular/router'
 import { Starship, StarshipResponse } from '../../util/model/starship'
 import { PageTitleComponent } from '../../../shared/ui/page-title/page-title.component'
 import { LoadingComponent } from '../../../shared/ui/loading/loading.component'
 import { PaginationComponent } from '../../../shared/ui/pagination/pagination.component'
+import { CardComponent } from '../../../shared/ui/card/card.component'
+import { Card } from '../../../shared/util/model/card'
 
 @Component({
   selector: 'app-starships-list',
   standalone: true,
-  imports: [CommonModule, StarshipCardComponent, PageTitleComponent, LoadingComponent, PaginationComponent],
+  imports: [
+    CommonModule, 
+    CardComponent, 
+    PageTitleComponent, 
+    LoadingComponent, 
+    PaginationComponent
+  ],
   templateUrl: './starships-list.component.html',
   styleUrl: './starships-list.component.scss'
 })
@@ -22,6 +29,7 @@ export class StarshipsListComponent implements OnInit {
   starshipSub: Subscription = new Subscription;
   pageControl: PageControl = new PageControl;
   loading: boolean = true;
+  cards: Card[] = [];
 
   constructor(
     private readonly starshipsService: StarshipsService,
@@ -43,7 +51,12 @@ export class StarshipsListComponent implements OnInit {
         })
       }
       this.starshipSub = this.starshipsService.getStarships(this.pageControl).subscribe((resp: StarshipResponse) => {
-        this.starships = resp.results;
+        this.cards = resp.results.map((e) => {
+          return {
+            name: e.name,
+            type: 'starships'
+          }
+        });
         this.pageControl.count = resp.count;
         this.loading = false;
       });
